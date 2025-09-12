@@ -1,42 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Adry Castro Wellness Brand Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Brand Colors - Wellness Green & Warm Beige Palette */
+    --background: 35 25% 96%;
+    --foreground: 180 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 35 30% 98%;
+    --card-foreground: 180 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 35 30% 98%;
+    --popover-foreground: 180 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Wellness Green Primary */
+    --primary: 180 25% 31%;
+    --primary-foreground: 35 30% 98%;
+    
+    /* Warm Beige Secondary */
+    --secondary: 35 25% 88%;
+    --secondary-foreground: 180 25% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 35 20% 92%;
+    --muted-foreground: 180 15% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 35% 85%;
+    --accent-foreground: 180 25% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 35 30% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 25% 88%;
+    --input: 35 25% 90%;
+    --ring: 180 25% 31%;
 
-    --radius: 0.5rem;
+    --radius: 12px;
+
+    /* Wellness Brand Extensions */
+    --wellness-green: 180 25% 31%;
+    --wellness-green-light: 180 25% 45%;
+    --warm-beige: 35 25% 88%;
+    --warm-beige-light: 35 30% 95%;
+    
+    /* Gradients */
+    --gradient-wellness: linear-gradient(135deg, hsl(var(--wellness-green)), hsl(var(--wellness-green-light)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--warm-beige)), hsl(var(--warm-beige-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--warm-beige-light)), hsl(var(--background)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsla(var(--wellness-green), 0.08);
+    --shadow-wellness: 0 8px 30px hsla(var(--wellness-green), 0.12);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +121,32 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+@layer components {
+  .wellness-gradient {
+    background: var(--gradient-wellness);
+  }
+  
+  .warm-gradient {
+    background: var(--gradient-warm);
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-wellness {
+    box-shadow: var(--shadow-wellness);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .transition-wellness {
+    transition: var(--transition-smooth);
   }
 }
