@@ -4,17 +4,28 @@ import { Heart, Sparkles, Flower } from "lucide-react";
 
 const programs = [
   {
-    id: "lipedema",
-    title: "Psiconutrición para Lipedema",
-    description: "Aprende a manejar la inflamación, tu peso y tu autoestima.",
-    icon: Heart,
-    cta: "Quiero este programa",
-    features: [
-      "Protocolo antiinflamatorio personalizado",
-      "Técnicas de autocompasión y autoestima",
-      "Comunidad de apoyo exclusiva"
-    ]
-  },
+  id: "lipedema",
+  title: "Psiconutrición para el Lipedema", 
+  description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
+  icon: Heart,
+  regularPrice: "$49 USD",
+  price: "$27 USD", 
+  status: "available",
+  statusText: "PROMOCIÓN LANZAMIENTO",
+  cta: "Comprar Ahora",
+  features: [
+    "Protocolo antiinflamatorio personalizado",
+    "Técnicas de autocompasión y autoestima",
+    "Plan de ejercicios específicos para lipedema", 
+    "Comunidad de apoyo exclusiva",
+    "Garantía de 30 días"
+  ],
+  highlights: [
+    "✅ Descarga inmediata",
+    "✅ Formato PDF + Audio",
+    "✅ Acceso de por vida"
+  ]
+},
   {
     id: "mujeres-40",
     title: "Psiconutrición para Mujeres Latinas de 40+",
