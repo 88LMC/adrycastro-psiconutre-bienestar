@@ -1,4 +1,4 @@
-import adryPhoto from "@/assets/adry-photo.jpg";
+import adryPhoto from "@/assets/adry politica 2.jpeg";
 
 const AboutSection = () => {
   return (
