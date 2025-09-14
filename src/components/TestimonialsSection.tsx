@@ -73,7 +73,7 @@ const scrollToSection = (sectionId: string) => {
     </CardContent>
   </Card>
 ))}
-          ))}
+          
         </div>
       </div>
     </section>
