@@ -2,8 +2,15 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/adry 1 fondo.jpeg";
 
 const HeroSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+const HeroSection = () => {
   return (
-    <section className="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="inicio" className="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       <div className="container mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -16,13 +23,26 @@ const HeroSection = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
               Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausa y los cambios metabolicos.
             </p>
+
             
-            <div className="pt-4">
-              <Button variant="hero" size="hero" className="text-lg">
-                Descubre mis programas
-              </Button>
-            </div>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+  <Button 
+    onClick={() => scrollToSection('libros')}
+    variant="default" 
+    size="lg" 
+    className="text-lg bg-wellness-green hover:bg-wellness-green-light text-white"
+  >
+    Descubre Mis Libros
+  </Button>
+  <Button 
+    onClick={() => scrollToSection('sobre-mi')}
+    variant="outline" 
+    size="lg" 
+    className="text-lg border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white"
+  >
+    Conoce Mi Historia
+  </Button>
+</div>
           
           {/* Hero Image */}
           <div className="relative">
