@@ -9,14 +9,12 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Psiconutrición para{" "}
-              <span className="text-wellness-green">transformar</span> tu cuerpo, 
-              tu mente y tu vida
+              Transforma tu{" "}
+              <span className="text-wellness-green">relación</span> con la comida cuando has pasado de los 40 años
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Descubre el poder de unir la psicología y la nutrición para recuperar 
-              tu autoestima, encontrar el equilibrio y vivir la vida que mereces.
+              Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausa y los cambios metabolicos.
             </p>
             
             <div className="pt-4">
