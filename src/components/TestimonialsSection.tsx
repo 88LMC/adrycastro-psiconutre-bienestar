@@ -2,8 +2,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 const TestimonialsSection = () => {
+const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
   return (
-    <section className="py-20 bg-wellness-beige-light">
+    <section id="testimonios" className="py-20 bg-wellness-beige-light">
       <div className="container mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
