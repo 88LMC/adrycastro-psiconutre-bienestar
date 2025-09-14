@@ -1,8 +1,14 @@
 import adryPhoto from "@/assets/adry politica 2.jpeg";
 
 const AboutSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
   return (
-    <section className="py-20 bg-background">
+    <section id="sobre-mi" className="py-20 bg-background">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Photo */}
@@ -51,6 +57,15 @@ const AboutSection = () => {
                 <div className="text-2xl font-bold text-wellness-green">8+</div>
                 <div className="text-sm text-muted-foreground">Años de experiencia</div>
               </div>
+            <div className="pt-4">
+              <Button 
+                onClick={() => scrollToSection('contacto')}
+                variant="default"
+                size="lg"
+                className="bg-wellness-green hover:bg-wellness-green-light text-white"
+              >
+                Conectemos
+              </Button>
             </div>
           </div>
         </div>
