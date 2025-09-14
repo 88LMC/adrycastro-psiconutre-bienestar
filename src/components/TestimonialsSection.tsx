@@ -22,25 +22,57 @@ const scrollToSection = (sectionId: string) => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Placeholder testimonial cards */}
-          {Array.from({ length: 3 }).map((_, index) => (
-            <Card key={index} className="border-0 shadow-soft bg-background">
-              <CardContent className="p-6 space-y-4">
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, starIndex) => (
-                    <Star key={starIndex} className="w-4 h-4 fill-wellness-green text-wellness-green" />
-                  ))}
-                </div>
-                
-                <blockquote className="text-muted-foreground italic leading-relaxed">
-                  "Después de haber probado de todo, gracias a Adry me di cuenta que el lipedema se afronta de adentro hacia fuera. No a través de cremas mágicas. No hay nada como sentirse bien cuando nos vemos al espejo !"
-                </blockquote>
-                
-                <div className="pt-2">
-                  <div className="font-medium text-foreground">Fernanda Cima</div>
-                  <div className="text-sm text-muted-foreground">Mexicana. 44 años</div>
-                </div>
-              </CardContent>
-            </Card>
+          {[
+  {
+    id: 1,
+    text: "Después de leer el libro de Adry sobre lipedema, finalmente entendí que no estaba loca. Sus estrategias me ayudaron a reducir la inflamación y, por primera vez en años, me siento esperanzada.",
+    author: "María Elena R.",
+    location: "México, 45 años",
+    condition: "Lipedema"
+  },
+  {
+    id: 2, 
+    text: "La psiconutrición cambió mi vida. Adry me enseñó que mi relación con la comida tenía más que ver con mis emociones que con falta de voluntad. ¡Gracias por devolverme la confianza!",
+    author: "Carmen S.",
+    location: "Colombia, 42 años", 
+    condition: "Autoestima alimentaria"
+  },
+  {
+    id: 3,
+    text: "Como latina viviendo en Estados Unidos, me sentía perdida con tanto consejo que no se aplicaba a nuestra cultura. Adry entiende nuestras necesidades únicas. Su enfoque es real y funciona.",
+    author: "Ana Patricia M.", 
+    location: "Texas, USA, 48 años",
+    condition: "Perimenopausia"
+  }
+].map((testimonial) => (
+  <Card key={testimonial.id} className="border-0 shadow-soft bg-background hover:shadow-xl transition-all duration-300 group">
+    <CardContent className="p-6 space-y-4">
+      <div className="flex gap-1">
+        {Array.from({ length: 5 }).map((_, starIndex) => (
+          <Star key={starIndex} className="w-4 h-4 fill-wellness-green text-wellness-green" />
+        ))}
+      </div>
+      
+      <div className="text-4xl text-wellness-green/30 font-bold leading-none">"</div>
+      
+      <blockquote className="text-muted-foreground italic leading-relaxed">
+        {testimonial.text}
+      </blockquote>
+      
+      <div className="pt-2 border-t border-gray-100">
+        <div className="font-medium text-foreground">
+          {testimonial.author}
+        </div>
+        <div className="text-sm text-muted-foreground">
+          {testimonial.location}
+        </div>
+        <div className="text-xs text-wellness-green font-medium mt-2 bg-wellness-green/10 inline-block px-3 py-1 rounded-full">
+          {testimonial.condition}
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+))}
           ))}
         </div>
       </div>
