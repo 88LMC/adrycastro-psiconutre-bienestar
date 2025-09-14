@@ -32,13 +32,12 @@ const scrollToSection = (sectionId: string) => {
                 </div>
                 
                 <blockquote className="text-muted-foreground italic leading-relaxed">
-                  "Espacio reservado para testimonios reales de mujeres que han transformado 
-                  su vida con los programas de Adry Castro."
+                  "Después de haber probado de todo, gracias a Adry me di cuenta que el lipedema se afronta de adentro hacia fuera. No a través de cremas mágicas. No hay nada como sentirse bien cuando nos vemos al espejo !"
                 </blockquote>
                 
                 <div className="pt-2">
-                  <div className="font-medium text-foreground">Testimonio próximamente</div>
-                  <div className="text-sm text-muted-foreground">Mujer empoderada, 40+</div>
+                  <div className="font-medium text-foreground">Fernanda Cima</div>
+                  <div className="text-sm text-muted-foreground">Mexicana. 44 años</div>
                 </div>
               </CardContent>
             </Card>
