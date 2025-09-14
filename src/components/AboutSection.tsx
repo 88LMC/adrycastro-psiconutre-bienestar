@@ -57,6 +57,9 @@ const AboutSection = () => {
                 <div className="text-2xl font-bold text-wellness-green">8+</div>
                 <div className="text-sm text-muted-foreground">Años de experiencia</div>
               </div>
+            </div>
+
+            {/* CTA */}
             <div className="pt-4">
               <Button 
                 onClick={() => scrollToSection('contacto')}
