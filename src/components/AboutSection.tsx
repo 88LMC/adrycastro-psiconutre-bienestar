@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import adryPhoto from "@/assets/adry politica 2.jpeg";
 
 const AboutSection = () => {
