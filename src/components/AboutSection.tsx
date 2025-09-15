@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { useContent } from "@/hooks/useContent";
 import adryPhoto from "@/assets/adry-politica-2.jpeg";
 
 const AboutSection = () => {
+  const { content } = useContent();
+  const aboutContent = content.about;
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ 
       behavior: 'smooth',
@@ -35,32 +39,24 @@ const AboutSection = () => {
           <div className="space-y-8 order-1 lg:order-2 text-center lg:text-left">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Sobre <span className="text-wellness-green">Adry Castro</span>
+                {aboutContent.title}
               </h2>
               
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
-                <p>
-                  Soy Adry Castro, psiconutricionista y mentora en desarrollo humano especializada en mujeres después de los 40 años. 
-                  Uno la psicología y la nutrición para ayudarte a recuperar tu autoestima, 
-                  equilibrio y salud integral.
-                </p>
-                
-                <p>
-                  Mi enfoque integral en psiconutrición te permite no solo transformar tu relación con la comida, 
-                  sino también fortalecer tu mente y reconectar con tu verdadero yo durante la perimenopausia y cambios metabólicos.
-                </p>
+                <p>{aboutContent.description1}</p>
+                <p>{aboutContent.description2}</p>
               </div>
             </div>
             
             {/* Credentials/Stats */}
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-wellness-green">500+</div>
-                <div className="text-sm text-muted-foreground">Mujeres transformadas</div>
+                <div className="text-2xl font-bold text-wellness-green">{aboutContent.stat1}</div>
+                <div className="text-sm text-muted-foreground">{aboutContent.stat1Label}</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-wellness-green">8+</div>
-                <div className="text-sm text-muted-foreground">Años de experiencia</div>
+                <div className="text-2xl font-bold text-wellness-green">{aboutContent.stat2}</div>
+                <div className="text-sm text-muted-foreground">{aboutContent.stat2Label}</div>
               </div>
             </div>
             
@@ -73,7 +69,7 @@ const AboutSection = () => {
                 className="bg-wellness-green hover:bg-wellness-green-light text-white"
                 aria-label="Contactar con Adry Castro para consulta de psiconutrición"
               >
-                Conectemos
+                {aboutContent.ctaButton}
               </Button>
             </div>
           </div>
