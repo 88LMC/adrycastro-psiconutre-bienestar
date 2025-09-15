@@ -4,51 +4,62 @@ import { Heart, Sparkles, Flower } from "lucide-react";
 
 const programs = [
   {
-  id: "lipedema",
-  title: "Psiconutrición para el Lipedema", 
-  description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
-  icon: Heart,
-  regularPrice: "$49 USD",
-  price: "$27 USD", 
-  status: "available",
-  statusText: "PROMOCIÓN LANZAMIENTO",
-  cta: "Comprar Ahora",
-  features: [
-    "Protocolo antiinflamatorio personalizado",
-    "Técnicas de autocompasión y autoestima",
-    "Plan de ejercicios específicos para lipedema", 
-    "Comunidad de apoyo exclusiva",
-    "Garantía de 30 días"
-  ],
-  highlights: [
-    "✅ Descarga inmediata",
-    "✅ Formato PDF + Audio",
-    "✅ Acceso de por vida"
-  ]
-},
-  {
-    id: "mujeres-40",
-    title: "Psiconutrición para Mujeres Latinas de 40+",
-    description: "Recupera tu energía, confianza y equilibrio en esta nueva etapa.",
-    icon: Sparkles,
-    cta: "Descúbrelo ahora",
+    id: "lipedema",
+    title: "Psiconutrición para el Lipedema",
+    description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
+    icon: Heart,
+    regularPrice: "$49 USD",
+    price: "$27 USD",
+    status: "available",
+    statusText: "PROMOCIÓN LIMITADA",
+    cta: "Comprar Ahora",
     features: [
-      "Nutrición para el metabolismo después de los 40",
-      "Gestión del estrés y las emociones",
-      "Herramientas para el empoderamiento personal"
+      "Protocolo antiinflamatorio personalizado",
+      "Plan de ejercicios específicos para lipedema",
+      "Técnicas de autocompasión y autoestima",
+      "Garantía de 30 días"
+    ],
+    highlights: [
+      "✅ Descarga inmediata",
+      "✅ Formato PDF + Audio",
+      "✅ Acceso de por vida"
     ]
   },
   {
+    id: "mujeres-40",
+    title: "Metabolismo 40+",
+    description: "Descubre cómo reactivar tu metabolismo después de los 40. De forma realista y sin evitar las comilonas familiares",
+    icon: Sparkles,
+    regularPrice: null,
+    price: "Próximamente",
+    status: "coming-soon",
+    statusText: "LANZAMIENTO: FEBRERO 2026",
+    cta: "Apúntate a la Lista",
+    features: [
+      "Nutrición para metabolismo después de los 40",
+      "Estrategias hormonales naturales",
+      "Rutinas de ejercicio adaptadas",
+      "Recetas latinas saludables"
+    ],
+    highlights: null
+  },
+  {
     id: "perimenopausia",
-    title: "Psiconutrición para la Perimenopausia",
-    description: "Equilibra tus hormonas, mejora tu estado de ánimo y vive plena.",
+    title: "Perimenopausia sin Drama",
+    description: "Tu guía para navegar la perimenopausia con confianza.",
     icon: Flower,
-    cta: "Empieza hoy",
+    regularPrice: null,
+    price: "Próximamente",
+    status: "coming-soon",
+    statusText: "LANZAMIENTO: MAYO 2026",
+    cta: "Notifícame",
     features: [
       "Alimentación para equilibrio hormonal",
       "Manejo de síntomas emocionales",
-      "Estrategias de bienestar integral"
-    ]
+      "Estrategias de bienestar integral",
+      "Herramientas de empoderamiento"
+    ],
+    highlights: null
   }
 ];
 
@@ -59,27 +70,59 @@ const ProgramsSection = () => {
       block: 'start'
     });
   };
+
+  const handleBookAction = (program: typeof programs[0]) => {
+    if (program.status === 'available') {
+      // TODO: Integrar con sistema de pagos (Paddle)
+      alert(`Próximamente: Sistema de pago para ${program.title} - ${program.price}`);
+    } else {
+      // Scroll to contact form for waitlist
+      scrollToSection('contacto');
+    }
+  };
+
   return (
     <section id="libros" className="py-20 bg-wellness-beige-light">
       <div className="container mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Programas <span className="text-wellness-green">Digitales</span>
+            Mis Libros <span className="text-wellness-green">Transformadores</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Transformaciones diseñadas específicamente para las necesidades únicas de cada mujer
+            Guías prácticas creadas específicamente para mujeres como tú
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {programs.map((program) => {
             const IconComponent = program.icon;
+            const isAvailable = program.status === 'available';
             
             return (
-              <Card key={program.id} className="border-0 shadow-wellness bg-card hover:shadow-xl transition-wellness group">
-                <CardHeader className="text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 bg-wellness-green/10 rounded-2xl flex items-center justify-center group-hover:bg-wellness-green/20 transition-wellness">
-                    <IconComponent className="w-8 h-8 text-wellness-green" />
+              <Card 
+                key={program.id} 
+                className={`border-0 shadow-soft bg-card hover:shadow-wellness transition-all duration-300 group relative ${
+                  isAvailable ? 'ring-2 ring-wellness-green scale-105' : ''
+                }`}
+              >
+                {/* Status Badge */}
+                <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold ${
+                  isAvailable 
+                    ? 'bg-wellness-green text-white' 
+                    : 'bg-muted text-muted-foreground'
+                }`}>
+                  {program.statusText}
+                </div>
+
+                <CardHeader className="text-center space-y-4 pt-8">
+                  <div className={`mx-auto w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                    isAvailable 
+                      ? 'bg-wellness-green/20 group-hover:bg-wellness-green/30' 
+                      : 'bg-muted group-hover:bg-muted/80'
+                  }`}>
+                    <IconComponent className={`w-8 h-8 ${
+                      isAvailable ? 'text-wellness-green' : 'text-muted-foreground'
+                    }`} />
                   </div>
                   
                   <CardTitle className="text-xl font-semibold text-foreground leading-tight">
@@ -89,25 +132,107 @@ const ProgramsSection = () => {
                   <CardDescription className="text-base text-muted-foreground">
                     {program.description}
                   </CardDescription>
+
+                  {/* Price Display */}
+                  <div className="text-center space-y-2">
+                    {program.regularPrice && isAvailable && (
+                      <div className="text-lg text-muted-foreground">
+                        <span className="line-through">Antes: {program.regularPrice}</span>
+                      </div>
+                    )}
+                    <div className={`text-3xl font-bold flex items-center justify-center gap-2 ${
+                      isAvailable ? 'text-wellness-green' : 'text-muted-foreground'
+                    }`}>
+                      {program.regularPrice && isAvailable && (
+                        <span className="text-red-500 font-black text-lg">AHORA:</span>
+                      )}
+                      {program.price}
+                    </div>
+                    {program.regularPrice && isAvailable && (
+                      <div className="text-sm font-semibold text-red-500">
+                        ¡Ahorra $22 USD!
+                      </div>
+                    )}
+                  </div>
                 </CardHeader>
                 
                 <CardContent className="space-y-6">
+                  {/* Urgency banner for available book */}
+                  {program.regularPrice && isAvailable && (
+                    <div className="bg-red-500 text-white px-4 py-2 rounded-lg text-center">
+                      <div className="text-xs font-bold">PROMOCIÓN LIMITADA</div>
+                      <div className="text-sm">Solo por tiempo limitado</div>
+                    </div>
+                  )}
+
                   <ul className="space-y-3">
                     {program.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3 text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-wellness-green rounded-full mt-2 flex-shrink-0" />
+                        <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
+                          isAvailable ? 'bg-wellness-green' : 'bg-muted-foreground'
+                        }`} />
                         {feature}
                       </li>
                     ))}
                   </ul>
+
+                  {/* Highlights for available book */}
+                  {program.highlights && (
+                    <div className="bg-wellness-green/10 rounded-lg p-3 space-y-1">
+                      {program.highlights.map((highlight, index) => (
+                        <div key={index} className="text-xs text-wellness-green font-medium">
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   
-                  <Button variant="wellness" className="w-full">
+                  <Button 
+                    onClick={() => handleBookAction(program)}
+                    variant={isAvailable ? "default" : "outline"}
+                    className={`w-full ${
+                      isAvailable 
+                        ? 'bg-wellness-green hover:bg-wellness-green/90 text-white' 
+                        : 'border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white'
+                    }`}
+                    size="lg"
+                  >
                     {program.cta}
                   </Button>
                 </CardContent>
               </Card>
             );
           })}
+        </div>
+
+        {/* Lead Magnet Section */}
+        <div className="mt-20 bg-gradient-to-r from-wellness-green to-wellness-green/80 rounded-3xl p-8 text-center text-white max-w-4xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            🎁 Regalo Exclusivo para Ti
+          </h3>
+          <p className="text-lg mb-6 opacity-95">
+            Descarga GRATIS mi "Guía de 7 Días para una perimenopausia sin estrés"
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input 
+              type="email" 
+              placeholder="Tu mail principal aquí" 
+              className="flex-1 px-4 py-3 rounded-full text-foreground outline-none"
+            />
+            <Button 
+              onClick={() => {
+                // TODO: Integrar con servicio de email (ConvertKit/Mailchimp)
+                alert('Próximamente: Captura de email para guía gratuita');
+              }}
+              variant="outline" 
+              className="bg-white text-wellness-green hover:bg-gray-100 rounded-full border-0"
+            >
+              Quiero mi Guía
+            </Button>
+          </div>
+          <p className="text-sm mt-4 opacity-80">
+            ✅ Tips diarios prácticos ✅ Recetas anti-inflamatorias ✅ Técnicas de mindfulness
+          </p>
         </div>
       </div>
     </section>
