@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Save, Eye, Download } from 'lucide-react';
 
 const AdminContent = () => {
@@ -14,12 +13,10 @@ const AdminContent = () => {
   const [activeSection, setActiveSection] = useState<'hero' | 'about' | 'programs'>('hero');
 
   const handleSave = () => {
-    // Crear el archivo JSON para descargar
     const dataStr = JSON.stringify(editedContent, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     
-    // Crear link de descarga
     const link = document.createElement('a');
     link.href = url;
     link.download = 'content.json';
@@ -48,7 +45,6 @@ const AdminContent = () => {
   return (
     <div className="py-8">
       <div className="container mx-auto px-6 max-w-4xl">
-        {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Administrar Contenido</h1>
           <div className="flex gap-4">
@@ -63,7 +59,6 @@ const AdminContent = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="flex gap-2 mb-8">
           {[
             { key: 'hero', label: 'Página Principal' },
@@ -81,7 +76,6 @@ const AdminContent = () => {
           ))}
         </div>
 
-        {/* Hero Section */}
         {activeSection === 'hero' && (
           <Card>
             <CardHeader>
@@ -89,45 +83,37 @@ const AdminContent = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <Label htmlFor="hero-title">Título Principal</Label>
+                <div className="text-sm font-medium mb-2">Título Principal</div>
                 <Textarea
-                  id="hero-title"
                   value={editedContent.hero.title}
                   onChange={(e) => updateSection('hero', 'title', e.target.value)}
-                  className="mt-2"
                   rows={2}
                 />
               </div>
               
               <div>
-                <Label htmlFor="hero-subtitle">Descripción</Label>
+                <div className="text-sm font-medium mb-2">Descripción</div>
                 <Textarea
-                  id="hero-subtitle"
                   value={editedContent.hero.subtitle}
                   onChange={(e) => updateSection('hero', 'subtitle', e.target.value)}
-                  className="mt-2"
                   rows={3}
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="hero-primary">Botón Principal</Label>
+                  <div className="text-sm font-medium mb-2">Botón Principal</div>
                   <Input
-                    id="hero-primary"
                     value={editedContent.hero.primaryButton}
                     onChange={(e) => updateSection('hero', 'primaryButton', e.target.value)}
-                    className="mt-2"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="hero-secondary">Botón Secundario</Label>
+                  <div className="text-sm font-medium mb-2">Botón Secundario</div>
                   <Input
-                    id="hero-secondary"
                     value={editedContent.hero.secondaryButton}
                     onChange={(e) => updateSection('hero', 'secondaryButton', e.target.value)}
-                    className="mt-2"
                   />
                 </div>
               </div>
@@ -135,7 +121,6 @@ const AdminContent = () => {
           </Card>
         )}
 
-        {/* About Section */}
         {activeSection === 'about' && (
           <Card>
             <CardHeader>
@@ -143,45 +128,37 @@ const AdminContent = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <Label htmlFor="about-title">Título</Label>
+                <div className="text-sm font-medium mb-2">Título</div>
                 <Input
-                  id="about-title"
                   value={editedContent.about.title}
                   onChange={(e) => updateSection('about', 'title', e.target.value)}
-                  className="mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="about-desc1">Primer Párrafo</Label>
+                <div className="text-sm font-medium mb-2">Primer Párrafo</div>
                 <Textarea
-                  id="about-desc1"
                   value={editedContent.about.description1}
                   onChange={(e) => updateSection('about', 'description1', e.target.value)}
-                  className="mt-2"
                   rows={3}
                 />
               </div>
 
               <div>
-                <Label htmlFor="about-desc2">Segundo Párrafo</Label>
+                <div className="text-sm font-medium mb-2">Segundo Párrafo</div>
                 <Textarea
-                  id="about-desc2"
                   value={editedContent.about.description2}
                   onChange={(e) => updateSection('about', 'description2', e.target.value)}
-                  className="mt-2"
                   rows={3}
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="stat1">Estadística 1</Label>
+                  <div className="text-sm font-medium mb-2">Estadística 1</div>
                   <Input
-                    id="stat1"
                     value={editedContent.about.stat1}
                     onChange={(e) => updateSection('about', 'stat1', e.target.value)}
-                    className="mt-2"
                   />
                   <Input
                     value={editedContent.about.stat1Label}
@@ -192,12 +169,10 @@ const AdminContent = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="stat2">Estadística 2</Label>
+                  <div className="text-sm font-medium mb-2">Estadística 2</div>
                   <Input
-                    id="stat2"
                     value={editedContent.about.stat2}
                     onChange={(e) => updateSection('about', 'stat2', e.target.value)}
-                    className="mt-2"
                   />
                   <Input
                     value={editedContent.about.stat2Label}
@@ -211,7 +186,6 @@ const AdminContent = () => {
           </Card>
         )}
 
-        {/* Programs Section */}
         {activeSection === 'programs' && (
           <Card>
             <CardHeader>
@@ -219,22 +193,18 @@ const AdminContent = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <Label htmlFor="programs-title">Título</Label>
+                <div className="text-sm font-medium mb-2">Título</div>
                 <Input
-                  id="programs-title"
                   value={editedContent.programs.title}
                   onChange={(e) => updateSection('programs', 'title', e.target.value)}
-                  className="mt-2"
                 />
               </div>
 
               <div>
-                <Label htmlFor="programs-subtitle">Descripción</Label>
+                <div className="text-sm font-medium mb-2">Descripción</div>
                 <Textarea
-                  id="programs-subtitle"
                   value={editedContent.programs.subtitle}
                   onChange={(e) => updateSection('programs', 'subtitle', e.target.value)}
-                  className="mt-2"
                   rows={2}
                 />
               </div>
@@ -244,26 +214,24 @@ const AdminContent = () => {
                 
                 <div className="space-y-4">
                   <div>
-                    <Label>Título del Lead Magnet</Label>
+                    <div className="text-sm font-medium mb-2">Título del Lead Magnet</div>
                     <Input
                       value={editedContent.programs.leadMagnet.title}
                       onChange={(e) => updateSection('programs', 'leadMagnet', {
                         ...editedContent.programs.leadMagnet,
                         title: e.target.value
                       })}
-                      className="mt-2"
                     />
                   </div>
                   
                   <div>
-                    <Label>Descripción</Label>
+                    <div className="text-sm font-medium mb-2">Descripción</div>
                     <Textarea
                       value={editedContent.programs.leadMagnet.description}
                       onChange={(e) => updateSection('programs', 'leadMagnet', {
                         ...editedContent.programs.leadMagnet,
                         description: e.target.value
                       })}
-                      className="mt-2"
                       rows={2}
                     />
                   </div>
@@ -273,7 +241,6 @@ const AdminContent = () => {
           </Card>
         )}
 
-        {/* Instructions */}
         <Card className="mt-8 bg-blue-50 border-blue-200">
           <CardHeader>
             <CardTitle className="text-blue-800">📋 Instrucciones</CardTitle>
