@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import adryPhoto from "@/assets/adry politica 2.jpeg";
+import adryPhoto from "@/assets/adry-politica-2.jpeg";
 
 const AboutSection = () => {
   const scrollToSection = (sectionId: string) => {
