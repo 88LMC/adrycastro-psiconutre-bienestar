@@ -8,6 +8,7 @@ const AboutSection = () => {
       block: 'start'
     });
   };
+
   return (
     <section id="sobre-mi" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -17,8 +18,11 @@ const AboutSection = () => {
             <div className="aspect-square rounded-3xl overflow-hidden shadow-wellness max-w-md mx-auto">
               <img 
                 src={adryPhoto} 
-                alt="Adry Castro - Psiconutricionista y mentora en desarrollo humano"
+                alt="Adry Castro - Psiconutricionista especializada en mujeres 40+ con lipedema y perimenopausia"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                width="400"
+                height="400"
               />
             </div>
             
@@ -31,19 +35,19 @@ const AboutSection = () => {
           <div className="space-y-8 order-1 lg:order-2 text-center lg:text-left">
             <div className="space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                Sobre <span className="text-wellness-green">Adry</span>
+                Sobre <span className="text-wellness-green">Adry Castro</span>
               </h2>
               
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
                 <p>
-                  Soy Adry Castro, psiconutricionista y mentora en desarrollo humano. 
+                  Soy Adry Castro, psiconutricionista y mentora en desarrollo humano especializada en mujeres después de los 40 años. 
                   Uno la psicología y la nutrición para ayudarte a recuperar tu autoestima, 
-                  equilibrio y salud.
+                  equilibrio y salud integral.
                 </p>
                 
                 <p>
-                  Mi enfoque integral te permite no solo transformar tu relación con la comida, 
-                  sino también fortalecer tu mente y reconectar con tu verdadero yo.
+                  Mi enfoque integral en psiconutrición te permite no solo transformar tu relación con la comida, 
+                  sino también fortalecer tu mente y reconectar con tu verdadero yo durante la perimenopausia y cambios metabólicos.
                 </p>
               </div>
             </div>
@@ -59,7 +63,7 @@ const AboutSection = () => {
                 <div className="text-sm text-muted-foreground">Años de experiencia</div>
               </div>
             </div>
-
+            
             {/* CTA */}
             <div className="pt-4">
               <Button 
@@ -67,6 +71,7 @@ const AboutSection = () => {
                 variant="default"
                 size="lg"
                 className="bg-wellness-green hover:bg-wellness-green-light text-white"
+                aria-label="Contactar con Adry Castro para consulta de psiconutrición"
               >
                 Conectemos
               </Button>
