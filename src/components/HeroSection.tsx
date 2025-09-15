@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/adry 1 fondo.jpeg";
+import heroImage from "@/assets/adry-1-fondo.jpeg";
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
