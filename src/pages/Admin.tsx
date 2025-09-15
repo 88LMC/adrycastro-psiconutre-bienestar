@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useContent } from '@/hooks/useContent';
+import AdminAuth from '@/components/AdminAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -7,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Save, Eye, Download } from 'lucide-react';
 
-const Admin = () => {
+const AdminContent = () => {
   const { content } = useContent();
   const [editedContent, setEditedContent] = useState(content);
   const [activeSection, setActiveSection] = useState<'hero' | 'about' | 'programs'>('hero');
@@ -45,7 +46,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="py-8">
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
@@ -289,6 +290,14 @@ const Admin = () => {
         </Card>
       </div>
     </div>
+  );
+};
+
+const Admin = () => {
+  return (
+    <AdminAuth>
+      <AdminContent />
+    </AdminAuth>
   );
 };
 
