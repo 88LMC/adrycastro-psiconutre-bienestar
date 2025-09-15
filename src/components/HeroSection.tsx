@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { useContent } from "@/hooks/useContent";
 import heroImage from "@/assets/adry-1-fondo.jpeg";
 
 const HeroSection = () => {
+  const { content } = useContent();
+  const heroContent = content.hero;
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ 
       behavior: 'smooth',
@@ -16,12 +20,17 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Transforma tu{" "}
-              <span className="text-wellness-green">relación</span> con la comida después de los 40 años
+              {heroContent.title.split(' ').map((word, index) => 
+                word === 'relación' ? (
+                  <span key={index} className="text-wellness-green">{word} </span>
+                ) : (
+                  <span key={index}>{word} </span>
+                )
+              )}
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausia y los cambios metabólicos. Método integral y resultados reales.
+              {heroContent.subtitle}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -32,7 +41,7 @@ const HeroSection = () => {
                 className="text-lg bg-wellness-green hover:bg-wellness-green-light text-white"
                 aria-label="Ver libros de psiconutrición para mujeres 40+"
               >
-                Descubre Mis Libros
+                {heroContent.primaryButton}
               </Button>
               <Button 
                 onClick={() => scrollToSection('sobre-mi')}
@@ -41,7 +50,7 @@ const HeroSection = () => {
                 className="text-lg border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white"
                 aria-label="Conocer la historia de Adry Castro"
               >
-                Conoce Mi Historia
+                {heroContent.secondaryButton}
               </Button>
             </div>
           </div>
