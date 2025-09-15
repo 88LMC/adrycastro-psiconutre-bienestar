@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Transforma tu relación con la comida después de los 40 años",
+    "subtitle": "Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausia y los cambios metabólicos. Método integral y resultados reales.",
+    "primaryButton": "Descubre Mis Libros",
+    "secondaryButton": "Conoce Mi Historia"
+  },
+  "about": {
+    "title": "Sobre Adry Castro",
+    "description1": "Soy Adry Castro, psiconutricionista y mentora en desarrollo humano especializada en mujeres después de los 40 años. Uno la psicología y la nutrición para ayudarte a recuperar tu autoestima, equilibrio y salud integral.",
+    "description2": "Mi enfoque integral en psiconutrición te permite no solo transformar tu relación con la comida, sino también fortalecer tu mente y reconectar con tu verdadero yo durante la perimenopausia y cambios metabólicos.",
+    "stat1": "500+",
+    "stat1Label": "Mujeres transformadas",
+    "stat2": "8+",
+    "stat2Label": "Años de experiencia",
+    "ctaButton": "Conectemos"
+  },
+  "programs": {
+    "title": "Libros de Psiconutrición para Mujeres 40+",
+    "subtitle": "Guías prácticas especializadas en lipedema, perimenopausia y bienestar integral para mujeres después de los 40",
+    "leadMagnet": {
+      "title": "🎁 Guía Gratuita de Perimenopausia",
+      "description": "Descarga GRATIS mi \"Guía de 7 Días para una perimenopausia sin estrés\" - Estrategias de psiconutrición probadas",
+      "placeholder": "Tu email principal aquí",
+      "button": "Quiero mi Guía",
+      "benefits": "✅ Tips diarios prácticos ✅ Recetas anti-inflamatorias ✅ Técnicas de mindfulness"
+    }
+  },
+  "contact": {
+    "email": "hola@adrycastro.com",
+    "phone": "+506 1234-5678",
+    "whatsapp": "50612345678",
+    "instagram": "@adrycastro",
+    "facebook": "adrycastro"
+  }
+}
