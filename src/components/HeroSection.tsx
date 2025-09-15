@@ -17,11 +17,11 @@ const HeroSection = () => {
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Transforma tu{" "}
-              <span className="text-wellness-green">relación</span> con la comida cuando has pasado de los 40 años
+              <span className="text-wellness-green">relación</span> con la comida después de los 40 años
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausia y los cambios metabolicos.
+              Descubre el poder de la psiconutrición para afrontar el lipedema, la perimenopausia y los cambios metabólicos. Método integral y resultados reales.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -30,6 +30,7 @@ const HeroSection = () => {
                 variant="default" 
                 size="lg" 
                 className="text-lg bg-wellness-green hover:bg-wellness-green-light text-white"
+                aria-label="Ver libros de psiconutrición para mujeres 40+"
               >
                 Descubre Mis Libros
               </Button>
@@ -38,6 +39,7 @@ const HeroSection = () => {
                 variant="outline" 
                 size="lg" 
                 className="text-lg border-2 border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white"
+                aria-label="Conocer la historia de Adry Castro"
               >
                 Conoce Mi Historia
               </Button>
@@ -49,8 +51,11 @@ const HeroSection = () => {
             <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-wellness">
               <img 
                 src={heroImage} 
-                alt="Mujer empoderada de 40+ años - Transformación y bienestar"
+                alt="Adry Castro - Especialista en psiconutrición para mujeres de 40+ años con lipedema y perimenopausia"
                 className="w-full h-full object-cover"
+                loading="eager"
+                width="600"
+                height="750"
               />
             </div>
             
