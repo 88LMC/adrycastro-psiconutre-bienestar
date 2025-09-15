@@ -86,10 +86,10 @@ const ProgramsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Mis Libros <span className="text-wellness-green">Transformadores</span>
+            Libros de <span className="text-wellness-green">Psiconutrición</span> para Mujeres 40+
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Guías prácticas creadas específicamente para mujeres como tú
+            Guías prácticas especializadas en lipedema, perimenopausia y bienestar integral para mujeres después de los 40
           </p>
         </div>
         
@@ -196,6 +196,7 @@ const ProgramsSection = () => {
                         : 'border-wellness-green text-wellness-green hover:bg-wellness-green hover:text-white'
                     }`}
                     size="lg"
+                    aria-label={`${program.cta} - ${program.title}`}
                   >
                     {program.cta}
                   </Button>
@@ -208,16 +209,17 @@ const ProgramsSection = () => {
         {/* Lead Magnet Section */}
         <div className="mt-20 bg-gradient-to-r from-wellness-green to-wellness-green/80 rounded-3xl p-8 text-center text-white max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            🎁 Regalo Exclusivo para Ti
+            🎁 Guía Gratuita de Perimenopausia
           </h3>
           <p className="text-lg mb-6 opacity-95">
-            Descarga GRATIS mi "Guía de 7 Días para una perimenopausia sin estrés"
+            Descarga GRATIS mi "Guía de 7 Días para una perimenopausia sin estrés" - Estrategias de psiconutrición probadas
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input 
               type="email" 
-              placeholder="Tu mail principal aquí" 
+              placeholder="Tu email principal aquí" 
               className="flex-1 px-4 py-3 rounded-full text-foreground outline-none"
+              aria-label="Email para recibir guía gratuita de perimenopausia"
             />
             <Button 
               onClick={() => {
@@ -226,6 +228,7 @@ const ProgramsSection = () => {
               }}
               variant="outline" 
               className="bg-white text-wellness-green hover:bg-gray-100 rounded-full border-0"
+              aria-label="Descargar guía gratuita de perimenopausia"
             >
               Quiero mi Guía
             </Button>
