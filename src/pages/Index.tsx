@@ -1,4 +1,5 @@
 import SEO from "../components/SEO";
+import StructuredData from "../components/StructuredData";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -16,6 +17,7 @@ const Index = () => {
         keywords="psiconutrición, mujeres 40+, nutrición emocional, pérdida de peso, coaching nutricional, alimentación consciente, bienestar integral"
         url="https://adrycastro.com"
       />
+      <StructuredData />
       <Header />
       <HeroSection />
       <AboutSection />
