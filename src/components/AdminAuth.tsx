@@ -8,7 +8,7 @@ interface AdminAuthProps {
   children: React.ReactNode;
 }
 
-const ADMIN_PASSWORD = 'AdryPsiconutre2025!'; // Cambiar por password que quieran
+const ADMIN_PASSWORD = 'Unagorditaamigajonadita2025'; // ← AQUÍ ESTÁ EL PASSWORD
 
 const AdminAuth = ({ children }: AdminAuthProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
