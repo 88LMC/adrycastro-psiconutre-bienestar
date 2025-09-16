@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Sparkles, Flower } from "lucide-react";
@@ -64,6 +65,10 @@ const programs = [
 ];
 
 const ProgramsSection = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState('');
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ 
       behavior: 'smooth',
@@ -79,6 +84,42 @@ const ProgramsSection = () => {
       // Scroll to contact form for waitlist
       scrollToSection('contacto');
     }
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    setMessage('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          firstName: '',
+          source: 'guia-perimenopausia'
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        setMessage('¡Perfecto! Revisa tu email para descargar la guía.');
+        setEmail('');
+      } else {
+        setMessage(data.message || 'Error al suscribirse. Intenta nuevamente.');
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setMessage('Error de conexión. Intenta nuevamente.');
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
@@ -206,7 +247,7 @@ const ProgramsSection = () => {
           })}
         </div>
 
-        {/* Lead Magnet Section */}
+        {/* Lead Magnet Section - UPDATED */}
         <div className="mt-20 bg-gradient-to-r from-wellness-green to-wellness-green/80 rounded-3xl p-8 text-center text-white max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
             🎁 Guía Gratuita de Perimenopausia
@@ -214,25 +255,35 @@ const ProgramsSection = () => {
           <p className="text-lg mb-6 opacity-95">
             Descarga GRATIS mi "Guía de 7 Días para una perimenopausia sin estrés" - Estrategias de psiconutrición probadas
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          
+          <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input 
               type="email" 
-              placeholder="Tu email principal aquí" 
-              className="flex-1 px-4 py-3 rounded-full text-foreground outline-none"
+              placeholder="Tu email principal aquí"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={isSubmitting}
+              className="flex-1 px-4 py-3 rounded-full text-foreground outline-none disabled:opacity-50"
               aria-label="Email para recibir guía gratuita de perimenopausia"
             />
             <Button 
-              onClick={() => {
-                // TODO: Integrar con servicio de email (ConvertKit/Mailchimp)
-                alert('Próximamente: Captura de email para guía gratuita');
-              }}
+              type="submit"
+              disabled={isSubmitting || !email}
               variant="outline" 
-              className="bg-white text-wellness-green hover:bg-gray-100 rounded-full border-0"
+              className="bg-white text-wellness-green hover:bg-gray-100 rounded-full border-0 disabled:opacity-50"
               aria-label="Descargar guía gratuita de perimenopausia"
             >
-              Quiero mi Guía
+              {isSubmitting ? 'Enviando...' : 'Quiero mi Guía'}
             </Button>
-          </div>
+          </form>
+
+          {message && (
+            <p className={`text-sm mt-4 ${message.includes('Perfecto') ? 'text-green-200' : 'text-red-200'}`}>
+              {message}
+            </p>
+          )}
+          
           <p className="text-sm mt-4 opacity-80">
             ✅ Tips diarios prácticos ✅ Recetas anti-inflamatorias ✅ Técnicas de mindfulness
           </p>
