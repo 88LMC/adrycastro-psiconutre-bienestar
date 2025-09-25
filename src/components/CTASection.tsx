@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -25,25 +26,27 @@ const CTASection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-  <Button 
-    onClick={() => scrollToSection('libros')}
-    variant="outline" 
-    size="lg"
-    className="bg-white text-wellness-green hover:bg-gray-100 border-2 border-white text-lg font-bold"
-  >
-    Comprar Mi Libro ($27)
-  </Button>
-  <Button 
-    onClick={() => {
-      alert('Próximamente: Descarga directa de guía');
-    }}
-    variant="outline" 
-    size="lg"
-    className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-wellness-green text-lg font-semibold"
-  >
-    Descargar Guía Gratis
-  </Button>
-</div>
+            <Button 
+              asChild
+              variant="outline" 
+              size="lg"
+              className="bg-white text-wellness-green hover:bg-gray-100 border-2 border-white text-lg font-bold"
+            >
+              <Link to="/checkout">
+                Comprar Mi Libro ($17)
+              </Link>
+            </Button>
+            <Button 
+              onClick={() => {
+                alert('Próximamente: Descarga directa de guía');
+              }}
+              variant="outline" 
+              size="lg"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-wellness-green text-lg font-semibold"
+            >
+              Descargar Guía Gratis
+            </Button>
+          </div>
         </div>
       </div>
       
