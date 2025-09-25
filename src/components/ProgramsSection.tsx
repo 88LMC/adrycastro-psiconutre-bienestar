@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Sparkles, Flower } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const programs = [
   {
@@ -10,7 +11,7 @@ const programs = [
     description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
     icon: Heart,
     regularPrice: "$49 USD",
-    price: "$27 USD",
+    price: "$17 USD",
     status: "available",
     statusText: "PROMOCIÓN LIMITADA",
     cta: "Comprar Ahora",
@@ -34,7 +35,7 @@ const programs = [
     regularPrice: null,
     price: "Próximamente",
     status: "coming-soon",
-    statusText: "LANZAMIENTO: FEBRERO 2026",
+    statusText: "LANZAMIENTO: FEB 2026",
     cta: "Apúntate a la Lista",
     features: [
       "Nutrición para metabolismo después de los 40",
@@ -52,7 +53,7 @@ const programs = [
     regularPrice: null,
     price: "Próximamente",
     status: "coming-soon",
-    statusText: "LANZAMIENTO: MAYO 2026",
+    statusText: "LANZAMIENTO: MAY 2026",
     cta: "Notifícame",
     features: [
       "Alimentación para equilibrio hormonal",
@@ -78,8 +79,8 @@ const ProgramsSection = () => {
 
   const handleBookAction = (program: typeof programs[0]) => {
     if (program.status === 'available') {
-      // TODO: Integrar con sistema de pagos (Paddle)
-      alert(`Próximamente: Sistema de pago para ${program.title} - ${program.price}`);
+      // Redirect to checkout page
+      window.location.href = '/checkout';
     } else {
       // Scroll to contact form for waitlist
       scrollToSection('contacto');
@@ -191,7 +192,7 @@ const ProgramsSection = () => {
                     </div>
                     {program.regularPrice && isAvailable && (
                       <div className="text-sm font-semibold text-red-500">
-                        ¡Ahorra $22 USD!
+                        ¡Ahorra $32 USD!
                       </div>
                     )}
                   </div>
