@@ -43,12 +43,42 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
       const details = await actions.order.capture();
       console.log('Pago completado:', details);
       
+      // Entregar libro automáticamente
+      try {
+        const deliveryResponse = await fetch('/api/deliver-book', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: details.payer.email_address,
+            paymentId: details.id,
+            productName: productName,
+            amount: amount,
+            customerName: `${details.payer.name?.given_name || ''} ${details.payer.name?.surname || ''}`.trim()
+          }),
+        });
+
+        const deliveryResult = await deliveryResponse.json();
+        
+        if (deliveryResult.success) {
+          console.log('Libro entregado automáticamente:', deliveryResult);
+        } else {
+          console.error('Error en entrega automática:', deliveryResult.message);
+          // El pago fue exitoso, pero la entrega falló - se puede manejar manualmente
+        }
+        
+      } catch (deliveryError) {
+        console.error('Error en entrega automática:', deliveryError);
+        // El pago fue exitoso, pero la entrega falló - continuamos normalmente
+      }
+      
       if (onSuccess) {
         onSuccess(details);
       }
       
-      // Redirect a página de éxito
-      window.location.href = `/success?payment=${details.id}&amount=${amount}&product=${encodeURIComponent(productName)}`;
+      // Redirect a página de éxito con información completa
+      window.location.href = `/success?payment=${details.id}&email=${encodeURIComponent(details.payer.email_address)}&product=${encodeURIComponent(productName)}&amount=${amount}`;
       
     } catch (error) {
       console.error('Error en el pago:', error);
