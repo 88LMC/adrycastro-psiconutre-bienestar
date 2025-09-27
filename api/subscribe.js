@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+  
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -12,24 +12,21 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email, firstName } = req.body;
+  const { email, firstName, source } = req.body;
 
   try {
     const response = await fetch(
-      `https://${process.env.MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_AUDIENCE_ID}/members`,
+      'https://api.convertkit.com/v3/subscribers',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
         },
         body: JSON.stringify({
-          email_address: email,
-          status: 'subscribed',
-          merge_fields: {
-            FNAME: firstName || '',
-          },
-          tags: ['guia-perimenopausia']
+          api_key: process.env.CONVERTKIT_API_KEY,
+          email: email,
+          first_name: firstName || '',
+          tags: [source || 'guia-perimenopausia']
         }),
       }
     );
@@ -39,10 +36,16 @@ export default async function handler(req, res) {
     if (response.ok) {
       res.status(200).json({ success: true, message: 'Suscripción exitosa' });
     } else {
-      res.status(400).json({ success: false, message: data.detail || 'Error en suscripción' });
+      res.status(400).json({ 
+        success: false, 
+        message: data.message || 'Error en suscripción' 
+      });
     }
   } catch (error) {
-    console.error('Mailchimp error:', error);
-    res.status(500).json({ success: false, message: 'Error interno' });
+    console.error('ConvertKit error:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error interno del servidor' 
+    });
   }
 }
