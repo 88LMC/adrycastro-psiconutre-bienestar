@@ -22,32 +22,29 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Agregar/actualizar contacto en Mailchimp con información de compra
+    // Agregar/actualizar suscriptor en ConvertKit con tag de compra
     const response = await fetch(
-      `https://${process.env.MAILCHIMP_SERVER}.api.mailchimp.com/3.0/lists/${process.env.MAILCHIMP_AUDIENCE_ID}/members/${Buffer.from(email.toLowerCase()).toString('hex')}`,
+      'https://api.convertkit.com/v3/subscribers',
       {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `apikey ${process.env.MAILCHIMP_API_KEY}`,
         },
         body: JSON.stringify({
-          email_address: email,
-          status: 'subscribed',
-          merge_fields: {
-            LBOOK: 'YES', // Campo personalizado: tiene libro
-            PAYID: paymentId, // ID del pago
-            PRODUCT: productName || 'Psiconutrición para Lipedema'
-          },
-          tags: ['libro-comprado', 'lipedema-completo', 'cliente-pagado']
+          api_key: process.env.CONVERTKIT_API_KEY,
+          email: email,
+          tags: ['libro-comprado'],
+          fields: {
+            payment_id: paymentId,
+            product: productName || 'Psiconutrición para Lipedema'
+          }
         }),
       }
     );
 
     const data = await response.json();
 
-    if (response.ok || response.status === 200) {
-      // Log para debugging
+    if (response.ok) {
       console.log(`Libro entregado a: ${email}, PaymentID: ${paymentId}`);
       
       res.status(200).json({ 
@@ -57,10 +54,10 @@ export default async function handler(req, res) {
         email
       });
     } else {
-      console.error('Mailchimp error:', data);
+      console.error('ConvertKit error:', data);
       res.status(400).json({ 
         success: false, 
-        message: data.detail || 'Error actualizando contacto' 
+        message: data.message || 'Error actualizando contacto' 
       });
     }
 
