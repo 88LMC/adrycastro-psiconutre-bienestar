@@ -251,10 +251,10 @@ const ProgramsSection = () => {
         {/* Lead Magnet Section - UPDATED */}
         <div className="mt-20 bg-gradient-to-r from-wellness-green to-wellness-green/80 rounded-3xl p-8 text-center text-white max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            🎁 Guía Gratuita de Perimenopausia
+            🎁 Extracto del libro "Plena con lipedema"
           </h3>
           <p className="text-lg mb-6 opacity-95">
-            Descarga GRATIS mi "Guía de 7 Días para una perimenopausia sin estrés" - Estrategias de psiconutrición probadas
+            "Descarga GRATIS los primeros 3 capitulos del libro"
           </p>
           
           <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
@@ -266,7 +266,7 @@ const ProgramsSection = () => {
               required
               disabled={isSubmitting}
               className="flex-1 px-4 py-3 rounded-full text-foreground outline-none disabled:opacity-50"
-              aria-label="Email para recibir guía gratuita de perimenopausia"
+              aria-label="Descarga GRATIS los primeros 3 capitulos del libro"
             />
             <Button 
               type="submit"
