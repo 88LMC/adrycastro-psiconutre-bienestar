@@ -20,11 +20,11 @@ export default async function handler(req, res) {
     // Determinar qué lista usar según el tipo
     let listId;
     if (type === 'purchase') {
-      // Para compras completas - lista "lista-comprado #5"
-      listId = await getListId('lista-comprado #5');
+      // Para compras completas - lista "lista-comprado" (ID: #5)
+      listId = await getListId('lista-comprado');
     } else if (type === 'freebie') {
-      // Para adelanto gratuito - lista "extracto-lipedema #6"
-      listId = await getListId('extracto-lipedema #6');
+      // Para adelanto gratuito - lista "extracto-lipedema" (ID: #6)
+      listId = await getListId('extracto-lipedema');
     } else {
       return res.status(400).json({ message: 'Invalid type. Use "purchase" or "freebie"' });
     }
