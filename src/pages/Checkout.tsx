@@ -14,7 +14,7 @@ const Checkout: React.FC = () => {
       'Comprensión profunda del lipedema y sus características',
       'Plan de alimentación antiinflamatorio',
       'Estrategias psicológicas para el manejo emocional',
-      'Metodología SANAR de las 5 esferas'
+      'Metodología SANAR de las 5 esferas',
       'Estrategias de autocuidado y autocompasión '
     ],
     deliveryInfo: [
