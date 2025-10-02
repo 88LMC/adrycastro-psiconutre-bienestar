@@ -7,41 +7,41 @@ import { Link } from "react-router-dom";
 const programs = [
   {
     id: "lipedema",
-    title: "Psiconutrición para el Lipedema",
+    title: "Plena con Lipedema",
     description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
     icon: Heart,
-    regularPrice: "$49 USD",
-    price: "$17 USD",
+    regularPrice: "$33 USD",
+    price: "$9 USD",
     status: "available",
     statusText: "PROMOCIÓN LIMITADA",
     cta: "Comprar Ahora",
     features: [
-      "Protocolo antiinflamatorio personalizado",
-      "Plan de ejercicios específicos para lipedema",
-      "Técnicas de autocompasión y autoestima",
+      "Entendiendo el lipedema",
+      "Mi metodología SANAR de las 5 esferas",
+      "Plan de accion",
       "Garantía de 30 días"
     ],
     highlights: [
       "✅ Descarga inmediata",
-      "✅ Formato PDF + Audio",
+      "✅ Formato PDF",
       "✅ Acceso de por vida"
     ]
   },
   {
     id: "mujeres-40",
-    title: "Metabolismo 40+",
-    description: "Descubre cómo reactivar tu metabolismo después de los 40. De forma realista y sin evitar las comilonas familiares",
+    title: "Plena a los cuarenta",
+    description: "El inicio de la mejor etapa de tu vida",
     icon: Sparkles,
     regularPrice: null,
     price: "Próximamente",
     status: "coming-soon",
-    statusText: "LANZAMIENTO: FEB 2026",
+    statusText: "LANZAMIENTO: DIC 2026",
     cta: "Apúntate a la Lista",
     features: [
-      "Nutrición para metabolismo después de los 40",
-      "Estrategias hormonales naturales",
-      "Rutinas de ejercicio adaptadas",
-      "Recetas latinas saludables"
+      "Conociendo y aceptando tu cuerpo. Un viaje del interior al exterior",
+      "El amor propio. El arma secreta que no sabías que tenías",
+      "Bienvenida Perimenopausa.Como afrontarla con la frente en alto ",
+      "Consejos y rutinas practicas"
     ],
     highlights: null
   },
