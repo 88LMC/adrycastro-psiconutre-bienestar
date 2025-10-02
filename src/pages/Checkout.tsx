@@ -15,7 +15,7 @@ const Checkout: React.FC = () => {
       'Plan de alimentación antiinflamatorio',
       'Estrategias psicológicas para el manejo emocional',
       'Metodología SANAR de las 5 esferas'
-      'Estrategias de autocuidado y autocompasión'
+      'Estrategias de autocuidado y autocompasión '
     ],
     deliveryInfo: [
       'Descarga inmediata en formato PDF',
