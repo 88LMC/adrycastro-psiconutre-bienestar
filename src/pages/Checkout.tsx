@@ -6,19 +6,15 @@ const Checkout: React.FC = () => {
   // Información del libro sobre lipedema
   const book = {
     id: 'libro-psiconutricion-lipedema',
-    name: 'Psiconutrición para Lipedema',
+    name: 'Plena con lipedema',
     price: '9',
     originalPrice: '33',
     description: 'La guía completa para entender y manejar el lipedema desde un enfoque integral',
     features: [
       'Comprensión profunda del lipedema y sus características',
-      'Plan de alimentación antiinflamatorio específico',
+      'Plan de alimentación antiinflamatorio',
       'Estrategias psicológicas para el manejo emocional',
-      'Ejercicios específicos y seguros para lipedema',
-      'Técnicas de drenaje linfático manual',
-      'Guía de suplementación natural',
-      'Protocolo de cuidado integral paso a paso',
-      'Recetas adaptadas para reducir inflamación',
+      'Metodología SANAR de las 5 esferas'
       'Estrategias de autocuidado y autocompasión'
     ],
     deliveryInfo: [
@@ -26,7 +22,6 @@ const Checkout: React.FC = () => {
       'Compatible con todos los dispositivos',
       'Más de 150 páginas de contenido especializado',
       'Acceso de por vida al material',
-      'Actualizaciones gratuitas incluidas',
       'Garantía de satisfacción 30 días'
     ]
   };
