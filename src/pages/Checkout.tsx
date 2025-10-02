@@ -7,8 +7,8 @@ const Checkout: React.FC = () => {
   const book = {
     id: 'libro-psiconutricion-lipedema',
     name: 'Psiconutrición para Lipedema',
-    price: '17',
-    originalPrice: '49',
+    price: '9',
+    originalPrice: '33',
     description: 'La guía completa para entender y manejar el lipedema desde un enfoque integral',
     features: [
       'Comprensión profunda del lipedema y sus características',
@@ -46,7 +46,7 @@ const Checkout: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Psiconutrición para Lipedema
+            Plena con Lipedema
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Tu guía completa para manejar el lipedema con un enfoque integral de alimentación y bienestar
@@ -74,7 +74,7 @@ const Checkout: React.FC = () => {
             {/* Discount Badge */}
             <div className="text-center mb-6">
               <span className="bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold">
-                Ahorra $32 - Oferta por tiempo limitado
+                Ahorra $24 - Oferta por tiempo limitado
               </span>
             </div>
 
