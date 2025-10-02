@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Sparkles, Flower } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const programs = [
@@ -40,26 +40,8 @@ const programs = [
     features: [
       "Conociendo y aceptando tu cuerpo. Un viaje del interior al exterior",
       "El amor propio. El arma secreta que no sabías que tenías",
-      "Bienvenida Perimenopausa.Como afrontarla con la frente en alto ",
+      "Bienvenida Perimenopausia.Como afrontarla con la frente en alto ",
       "Consejos y rutinas practicas"
-    ],
-    highlights: null
-  },
-  {
-    id: "perimenopausia",
-    title: "Perimenopausia sin Drama",
-    description: "Tu guía para navegar la perimenopausia con confianza.",
-    icon: Flower,
-    regularPrice: null,
-    price: "Próximamente",
-    status: "coming-soon",
-    statusText: "LANZAMIENTO: MAY 2026",
-    cta: "Notifícame",
-    features: [
-      "Alimentación para equilibrio hormonal",
-      "Manejo de síntomas emocionales",
-      "Estrategias de bienestar integral",
-      "Herramientas de empoderamiento"
     ],
     highlights: null
   }
@@ -79,10 +61,8 @@ const ProgramsSection = () => {
 
   const handleBookAction = (program: typeof programs[0]) => {
     if (program.status === 'available') {
-      // Redirect to checkout page
       window.location.href = '/checkout';
     } else {
-      // Scroll to contact form for waitlist
       scrollToSection('contacto');
     }
   };
@@ -135,7 +115,7 @@ const ProgramsSection = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {programs.map((program) => {
             const IconComponent = program.icon;
             const isAvailable = program.status === 'available';
@@ -147,7 +127,6 @@ const ProgramsSection = () => {
                   isAvailable ? 'ring-2 ring-wellness-green scale-105' : ''
                 }`}
               >
-                {/* Status Badge */}
                 <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold ${
                   isAvailable 
                     ? 'bg-wellness-green text-white' 
@@ -175,7 +154,6 @@ const ProgramsSection = () => {
                     {program.description}
                   </CardDescription>
 
-                  {/* Price Display */}
                   <div className="text-center space-y-2">
                     {program.regularPrice && isAvailable && (
                       <div className="text-lg text-muted-foreground">
@@ -192,14 +170,13 @@ const ProgramsSection = () => {
                     </div>
                     {program.regularPrice && isAvailable && (
                       <div className="text-sm font-semibold text-red-500">
-                        ¡Ahorra $32 USD!
+                        ¡Ahorra $24 USD!
                       </div>
                     )}
                   </div>
                 </CardHeader>
                 
                 <CardContent className="space-y-6">
-                  {/* Urgency banner for available book */}
                   {program.regularPrice && isAvailable && (
                     <div className="bg-red-500 text-white px-4 py-2 rounded-lg text-center">
                       <div className="text-xs font-bold">PROMOCIÓN LIMITADA</div>
@@ -218,7 +195,6 @@ const ProgramsSection = () => {
                     ))}
                   </ul>
 
-                  {/* Highlights for available book */}
                   {program.highlights && (
                     <div className="bg-wellness-green/10 rounded-lg p-3 space-y-1">
                       {program.highlights.map((highlight, index) => (
@@ -248,7 +224,6 @@ const ProgramsSection = () => {
           })}
         </div>
 
-        {/* Lead Magnet Section - UPDATED */}
         <div className="mt-20 bg-gradient-to-r from-wellness-green to-wellness-green/80 rounded-3xl p-8 text-center text-white max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
             🎁 Extracto del libro "Plena con lipedema"
