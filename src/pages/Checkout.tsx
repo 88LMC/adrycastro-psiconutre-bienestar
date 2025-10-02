@@ -28,7 +28,6 @@ const Checkout: React.FC = () => {
 
   const handlePaymentSuccess = (details: any) => {
     console.log('Compra exitosa del libro de lipedema:', details);
-    // Aquí se puede agregar lógica para envío automático del PDF
   };
 
   const handlePaymentError = (error: any) => {
@@ -48,13 +47,24 @@ const Checkout: React.FC = () => {
           </p>
         </div>
 
-      <div className="w-32 h-40 rounded-lg mx-auto mb-4 overflow-hidden shadow-lg">
-  <img 
-    src="/libro-lipedema-cover.jpg" 
-    alt="Portada Plena con Lipedema"
-    className="w-full h-full object-cover"
-  />
-</div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Product Information */}
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="text-center mb-6">
+              <div className="w-32 h-40 rounded-lg mx-auto mb-4 overflow-hidden shadow-lg">
+                <img 
+                  src="/libro-lipedema-cover.jpg" 
+                  alt="Portada Plena con Lipedema"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                {book.name}
+              </h2>
+              <p className="text-gray-600 text-lg">
+                {book.description}
+              </p>
+            </div>
 
             {/* Discount Badge */}
             <div className="text-center mb-6">
@@ -110,7 +120,7 @@ const Checkout: React.FC = () => {
                 <span className="text-gray-600 ml-2">USD</span>
               </div>
               <p className="text-green-600 font-semibold text-lg">
-                ¡Ahorra $32 hoy!
+                ¡Ahorra $24 hoy!
               </p>
             </div>
 
