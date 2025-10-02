@@ -48,23 +48,13 @@ const Checkout: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Product Information */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="text-center mb-6">
-              <div className="w-32 h-40 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                <div className="text-white text-center">
-                  <div className="text-2xl font-bold mb-1">GUÍA</div>
-                  <div className="text-xs">DIGITAL</div>
-                </div>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                {book.name}
-              </h2>
-              <p className="text-gray-600 text-lg">
-                {book.description}
-              </p>
-            </div>
+      <div className="w-32 h-40 rounded-lg mx-auto mb-4 overflow-hidden shadow-lg">
+  <img 
+    src="/libro-lipedema-cover.jpg" 
+    alt="Portada Plena con Lipedema"
+    className="w-full h-full object-cover"
+  />
+</div>
 
             {/* Discount Badge */}
             <div className="text-center mb-6">
