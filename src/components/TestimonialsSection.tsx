@@ -39,7 +39,7 @@ const scrollToSection = (sectionId: string) => {
   },
   {
     id: 3,
-    text: "Como latina viviendo en Estados Unidos, me sentía perdida con tanto consejo que no se aplicaba a nuestra cultura. Adry entiende nuestras necesidades únicas. Su enfoque es real y funciona.",
+    text: "Como mexicana viviendo en Estados Unidos, me sentía perdida con tanto consejo que no se aplicaba a nuestra cultura. Adry entiende nuestras necesidades únicas. Su enfoque es real y funciona.",
     author: "Ana Patricia M.", 
     location: "Texas, USA, 48 años",
     condition: "Perimenopausia"
