@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useContent } from "@/hooks/useContent";
-import adryPhoto from "@/assets/adry-politica-2.jpeg";
+import adryPhoto from "@/assets/adriana-portada-sitio.jpeg";
 
 const AboutSection = () => {
   const { content } = useContent();
