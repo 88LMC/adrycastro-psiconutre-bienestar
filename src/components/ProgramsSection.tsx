@@ -261,7 +261,7 @@ const ProgramsSection = () => {
           )}
           
           <p className="text-sm mt-4 opacity-80">
-            ✅ Tips diarios prácticos ✅ Recetas anti-inflamatorias ✅ Técnicas de mindfulness
+            ✅ Aprende del lipedema ✅ Tips de alimentación ✅ Técnicas practicas
           </p>
         </div>
       </div>
