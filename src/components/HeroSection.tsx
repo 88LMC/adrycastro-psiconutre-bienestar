@@ -20,14 +20,14 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="space-y-8 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              {heroContent.title.split(' ').map((word, index) => 
-                word === 'relación' ? (
-                  <span key={index} className="text-wellness-green">{word} </span>
-                ) : (
-                  <span key={index}>{word} </span>
-                )
-              )}
-            </h1>
+  {heroContent.title.split(' ').map((word, index) => {
+    // Palabras que queremos en color verde
+    if (word === 'cuerpo' || word === 'mente' || word === 'relación') {
+      return <span key={index} className="text-wellness-green">{word} </span>;
+    }
+    return <span key={index}>{word} </span>;
+  })}
+</h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
               {heroContent.subtitle}
