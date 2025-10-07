@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useContent } from "@/hooks/useContent";
-import heroImage from "@/assets/adriana-portada-sitio.jpeg";
+import heroImage from "@/assets/adry-castro-gimnasio.jpeg";
 
 const HeroSection = () => {
   const { content } = useContent();
