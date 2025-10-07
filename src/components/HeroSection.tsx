@@ -22,7 +22,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
   {heroContent.title.split(' ').map((word, index) => {
     // Palabras que queremos en color verde
-    if (word === 'CUERPO' || word === 'MENTE' || word === 'relación') {
+    if (word === 'CUERPO' || word === 'MENTE' || word === 'PLENA') {
       return <span key={index} className="text-wellness-green">{word} </span>;
     }
     return <span key={index}>{word} </span>;
