@@ -33,7 +33,7 @@ const CTASection = () => {
               className="bg-white text-wellness-green hover:bg-gray-100 border-2 border-white text-lg font-bold"
             >
               <Link to="/checkout">
-                Comprar Mi Libro ($9)
+                              Comprar Mi Libro ($27)
               </Link>
             </Button>
             <Button 
