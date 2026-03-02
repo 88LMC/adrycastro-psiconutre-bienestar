@@ -8,8 +8,7 @@ const Checkout: React.FC = () => {
     id: 'libro-psiconutricion-lipedema',
     name: 'Plena con lipedema',
         price: '27',
-        originalPrice: '27',
-    description: 'La guía completa para entender y manejar el lipedema desde un enfoque integral',
+        description: 'La guía completa para entender y manejar el lipedema desde un enfoque integral',
     features: [
       'Comprensión profunda del lipedema y sus características',
       'Plan de alimentación antiinflamatorio',
@@ -66,13 +65,6 @@ const Checkout: React.FC = () => {
               </p>
             </div>
 
-            {/* Discount Badge */}
-            <div className="text-center mb-6">
-              <span className="bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold">
-                Ahorra $24 - Oferta por tiempo limitado
-              </span>
-            </div>
-
             {/* Features */}
             <div className="space-y-4">
               <h3 className="font-bold text-lg text-purple-800">
@@ -111,18 +103,12 @@ const Checkout: React.FC = () => {
             {/* Pricing */}
             <div className="text-center mb-6">
               <div className="mb-4">
-                <span className="text-2xl text-gray-400 line-through mr-3">
-                  ${book.originalPrice}
-                </span>
                 <span className="text-4xl font-bold text-purple-600">
                   ${book.price}
                 </span>
                 <span className="text-gray-600 ml-2">USD</span>
               </div>
-              <p className="text-green-600 font-semibold text-lg">
-                ¡Ahorra $24 hoy!
-              </p>
-            </div>
+              div>
 
             {/* Order Summary */}
             <div className="bg-gray-50 rounded-lg p-6 mb-6">
