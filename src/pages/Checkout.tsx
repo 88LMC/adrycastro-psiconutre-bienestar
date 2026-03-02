@@ -108,7 +108,7 @@ const Checkout: React.FC = () => {
                 </span>
                 <span className="text-gray-600 ml-2">USD</span>
               </div>
-              div>
+          </div>            
 
             {/* Order Summary */}
             <div className="bg-gray-50 rounded-lg p-6 mb-6">
