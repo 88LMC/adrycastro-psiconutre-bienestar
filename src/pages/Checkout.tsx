@@ -7,8 +7,8 @@ const Checkout: React.FC = () => {
   const book = {
     id: 'libro-psiconutricion-lipedema',
     name: 'Plena con lipedema',
-    price: '9',
-    originalPrice: '33',
+        price: '27',
+        originalPrice: '27',
     description: 'La guía completa para entender y manejar el lipedema desde un enfoque integral',
     features: [
       'Comprensión profunda del lipedema y sus características',
