@@ -10,14 +10,14 @@ const programs = [
     title: "Plena con Lipedema",
     description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
     icon: Heart,
-    regularPrice: "$33 USD",
-    price: "$9 USD",
+    regularPrice: "$47 USD",
+    price: "$27 USD",
     status: "available",
     statusText: "PROMOCIÓN LIMITADA",
     cta: "Comprar Ahora",
     features: [
       "Entendiendo el lipedema",
-      "Mi metodología SANAR de las 5 esferas",
+      "Mi metodología AMAR de las 4 esferas",
       "Plan de accion",
       "Garantía de 30 días"
     ],
