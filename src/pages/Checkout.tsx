@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import PayPalButton from '../components/PayPalButton';
 
 const PLANS: Record<string, {
-  id: string;
+  id: string27
   name: string;
   price: string;
   description: string;
@@ -14,7 +14,7 @@ const PLANS: Record<string, {
   libro: {
     id: 'libro-plena-con-lipedema',
     name: 'Plena con Lipedema',
-    price: '27',
+    price: '1',
     description: 'El libro completo + 5 documentos bonus. Tu punto de partida con el Método A.M.A.R.',
     features: [
       '12 capítulos de transformación integral',
@@ -32,7 +32,7 @@ const PLANS: Record<string, {
     description: 'Todo lo del libro más acceso a una comunidad privada de mujeres con lipedema y una sesión grupal mensual con Adry.',
     badge: 'Más popular',
     features: [
-      'Todo lo del libro ($27)',
+      'Todo lo del libro ($)',
       'Comunidad privada en Telegram',
       '1 sesión grupal en vivo por Zoom al mes',
       'Preguntas directas a Adry',
