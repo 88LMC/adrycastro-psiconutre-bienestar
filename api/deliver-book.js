@@ -67,7 +67,7 @@ export default async function handler(req, res) {
       throw new Error('Brevo API error: ' + response.status + ' ' + JSON.stringify(errorData));
     }
 
-    const result = await response.json();
+    
     return res.status(200).json({ success: true, message: 'Delivery initiated', list: listName });
 
   } catch (error) {
