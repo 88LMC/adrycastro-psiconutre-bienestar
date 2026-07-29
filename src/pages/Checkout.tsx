@@ -14,7 +14,7 @@ const PLANS: Record<string, {
   libro: {
     id: 'libro-plena-con-lipedema',
     name: 'Plena con Lipedema',
-    price: '1',
+    price: '27',
     description: 'El libro completo + 5 documentos bonus. Tu punto de partida con el Método A.M.A.R.',
     features: [
       '12 capítulos de transformación integral',
