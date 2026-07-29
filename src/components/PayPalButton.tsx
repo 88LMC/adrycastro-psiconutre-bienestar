@@ -42,6 +42,20 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
     try {
       const details = await actions.order.capture();
       console.log('Pago completado:', details);
+// Confirmar la compra en la app (crea el token de acceso PLENA-XXXX).
+      // Es una llamada aparte de la del libro: si esta falla no debe bloquear
+      // la entrega del libro ni el flujo de exito.
+      try {
+        await fetch('https://app.plenaconlipedema.com/api/confirm-purchase', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: details.id }),
+        });
+      } catch (confirmError) {
+        console.error('Error confirmando compra (token app):', confirmError);
+      }
+
+      
       
       // Entregar libro automáticamente
       try {
