@@ -23,39 +23,39 @@ const Success = () => {
   const amount = searchParams.get('amount');
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
+    <div className="min-h-screen flex items-center justify-center bg-[#FAF9F7]">
       <div className="text-center max-w-md mx-auto p-8">
         <div className="mb-6">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-16 h-16 bg-[#EAF3F0] border-2 border-[#49978A] rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-[#49978A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-green-800 mb-4">
+          <h1 className="font-playfair text-3xl font-bold text-[#2E2E2E] mb-4">
             ¡Compra Exitosa!
           </h1>
-          <p className="text-gray-600 mb-4">
-            Tu compra de <strong>"{product || 'Psiconutrición para Lipedema'}"</strong> por <strong>${amount} USD</strong> se procesó correctamente.
+          <p className="text-[#2E2E2E]/80 mb-4">
+            Tu compra de <strong>"{product || 'Plena con Lipedema'}"</strong> por <strong>${amount} USD</strong> se procesó correctamente.
           </p>
           {email && (
-            <div className="bg-blue-50 p-4 rounded-lg mb-6">
-              <p className="text-blue-800 font-semibold mb-2">📚 Tu libro digital:</p>
-              <p className="text-blue-700 text-sm">
-                Se enviará automáticamente a <strong>{email}</strong> en los próximos 5 minutos.
+            <div className="bg-[#EAF3F0] border border-[#9DB39A] p-4 rounded-lg mb-6">
+              <p className="text-[#2E2E2E] font-semibold mb-2">📚 Tu libro y tu app:</p>
+              <p className="text-[#2E2E2E]/80 text-sm">
+                El libro y el código de acceso a la app se envían automáticamente a <strong>{email}</strong> en los próximos 5 minutos.
               </p>
             </div>
           )}
-          <div className="bg-white p-4 rounded-lg shadow-sm border">
-            <p className="text-sm text-gray-500 mb-2">Próximos pasos:</p>
-            <ul className="text-sm text-gray-600 text-left space-y-1">
+          <div className="bg-white p-4 rounded-lg shadow-sm border border-[#e0e0e0]">
+            <p className="text-sm text-[#2E2E2E]/60 mb-2">Próximos pasos:</p>
+            <ul className="text-sm text-[#2E2E2E]/80 text-left space-y-1">
               <li>• Revisa tu bandeja de entrada y carpeta de spam</li>
-              <li>• El libro se envía desde hola@adrycastro.com</li>
+              <li>• El libro y la app se envían desde hola@adrycastro.com</li>
               <li>• Si no lo recibes en 10 minutos, contáctanos</li>
               <li>• Descarga inmediata en formato PDF</li>
             </ul>
           </div>
           {paymentId && (
-            <p className="text-xs text-gray-400 mt-4">
+            <p className="text-xs text-[#2E2E2E]/40 mt-4">
               ID de compra: {paymentId}
             </p>
           )}
