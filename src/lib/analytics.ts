@@ -1,25 +1,15 @@
 // Google Analytics + Meta Pixel configuration
+//
+// Ambos IDs se toman de variables de entorno (configurar en Vercel, proyecto
+// de adrycastro.com). Si no estan configuradas, initGA()/initMetaPixel() no
+// hacen nada -- no rompen el sitio.
+//   VITE_GA4_ID        -> Measurement ID de GA4, formato "G-XXXXXXXXXX"
+//                          (debe ser el MISMO que usa plenaconlipedema.com,
+//                          para que cuente como una sola propiedad unificada)
+//   VITE_META_PIXEL_ID -> Pixel ID de Meta, solo numeros
 
-export const GA_TRACKING_ID = 'G-Y4WPXS0TWS';
-
-// Meta Pixel ID: se toma de la variable de entorno VITE_META_PIXEL_ID
-// (configurar en Vercel, proyecto de adrycastro.com). Si no esta configurada,
-// initMetaPixel() no hace nada -- no rompe el sitio.
+export const GA_TRACKING_ID = import.meta.env.VITE_GA4_ID as string | undefined;
 const META_PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
-    fbq?: ((...args: unknown[]) => void) & {
-      callMethod?: (...args: unknown[]) => void;
-      queue?: unknown[];
-      loaded?: boolean;
-      version?: string;
-    };
-    _fbq?: unknown;
-  }
-}
 
 // Initialize Google Analytics
 export const initGA = () => {
