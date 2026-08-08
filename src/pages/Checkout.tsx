@@ -1,7 +1,8 @@
 // src/pages/Checkout.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PayPalButton from '../components/PayPalButton';
+import { trackInitiateCheckout } from '../lib/analytics';
 
 const PLANS: Record<string, {
   id: string;
@@ -61,6 +62,15 @@ const Checkout: React.FC = () => {
   const [searchParams] = useSearchParams();
   const planKey = searchParams.get('plan') || 'libro';
   const plan = PLANS[planKey] || PLANS.libro;
+
+  useEffect(() => {
+    trackInitiateCheckout({
+      value: parseFloat(plan.price),
+      currency: 'USD',
+      content_name: plan.name,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [planKey]);
 
   const handlePaymentSuccess = (details: any) => {
     console.log('Compra exitosa:', details);

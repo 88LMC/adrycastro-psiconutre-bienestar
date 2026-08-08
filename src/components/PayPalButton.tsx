@@ -1,6 +1,7 @@
 // src/components/PayPalButton.tsx
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { trackPurchase } from '../lib/analytics';
 
 interface PayPalButtonProps {
   amount: string;
@@ -42,6 +43,14 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
     try {
       const details = await actions.order.capture();
       console.log('Pago completado:', details);
+
+      // Medir la compra real (pago ya capturado, dinero confirmado)
+      trackPurchase({
+        value: parseFloat(amount),
+        currency: 'USD',
+        content_name: productName,
+        transaction_id: details.id,
+      });
 // Confirmar la compra en la app (crea el token de acceso PLENA-XXXX).
       // Es una llamada aparte de la del libro: si esta falla no debe bloquear
       // la entrega del libro ni el flujo de exito.
