@@ -1,93 +1,60 @@
+// Suscripcion a listas de Brevo desde los formularios de adrycastro.com.
+// Protegido contra bots: ver lib/antibot.js. En sept 2026 este endpoint fue
+// usado para un ataque de subscription bombing porque aceptaba cualquier
+// origen y mandaba todo por defecto a la lista extracto-lipedema.
+
+import { applyCors, checkSubmission } from '../lib/antibot.js';
+import { addToBrevo } from '../lib/brevo-subscribe.js';
+
+// Fuentes aceptadas -> lista de Brevo. Una fuente desconocida se rechaza.
+const SOURCES = {
+  'extracto-lipedema':     { listId: 6,  doi: true },
+  'lead-magnet-3-errores': { listId: 7,  doi: true },
+  'waitlist-fundadoras':   { listId: 8,  doi: true },
+};
+
+const REDIRECT_AFTER_CONFIRM = 'https://www.adrycastro.com/?suscripcion=confirmada';
+
 export default async function handler(req, res) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  applyCors(req, res);
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
-  const { email, firstName, source, country } = req.body;
-
-  if (!email) {
-    return res.status(400).json({ success: false, message: 'Email es requerido' });
+  const check = await checkSubmission(req);
+  if (!check.ok) {
+    if (check.silent) {
+      console.warn('Suscripcion descartada (bot):', check.reason);
+      return res.status(200).json({ success: true, message: 'Suscripción exitosa' });
+    }
+    return res.status(check.status).json({ success: false, message: check.message });
   }
 
-  const BREVO_API_KEY = process.env.BREVO_API_KEY;
-  if (!BREVO_API_KEY) {
-    return res.status(500).json({ success: false, message: 'API key no configurada' });
+  const { firstName, source, country } = req.body || {};
+  const config = SOURCES[source];
+  if (!config) {
+    return res.status(400).json({ success: false, message: 'Formulario no reconocido' });
   }
 
   try {
-    // Determinar lista según fuente
-    const listName = getListName(source);
-
-    // Obtener listas de Brevo
-    const listsResponse = await fetch('https://api.brevo.com/v3/contacts/lists?limit=50', {
-      headers: { 'Accept': 'application/json', 'api-key': BREVO_API_KEY }
+    const result = await addToBrevo({
+      email: check.email,
+      firstName: String(firstName || '').trim().slice(0, 60),
+      country,
+      source,
+      listId: config.listId,
+      doi: config.doi,
+      redirectionUrl: REDIRECT_AFTER_CONFIRM,
     });
 
-    if (!listsResponse.ok) throw new Error('No se pudieron obtener las listas de Brevo');
-
-    const listsData = await listsResponse.json();
-    const list = listsData.lists.find(l => l.name === listName);
-
-    if (!list) {
-      throw new Error(`Lista "${listName}" no encontrada en Brevo. Créala primero.`);
+    if (!result.ok) {
+      return res.status(502).json({ success: false, message: 'No pudimos registrarte. Intenta de nuevo en un momento.' });
     }
-
-    // Armar atributos
-    const attributes = { FIRSTNAME: firstName || '' };
-    if (country) attributes.COUNTRY = country;
-    if (source) attributes.SOURCE = source;
-
-    // Añadir contacto
-    const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'api-key': BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        email: email.trim().toLowerCase(),
-        attributes,
-        listIds: [list.id],
-        updateEnabled: true
-      })
-    });
-
-    const contactData = await contactResponse.json();
-
-    if (contactResponse.ok || contactResponse.status === 201) {
-      return res.status(200).json({ success: true, message: 'Suscripción exitosa' });
-    } else {
-      console.error('Brevo error:', contactData);
-      return res.status(400).json({
-        success: false,
-        message: contactData.message || 'Error al suscribirse'
-      });
-    }
-
+    return res.status(200).json({ success: true, doi: result.doi, message: 'Suscripción exitosa' });
   } catch (error) {
     console.error('Subscribe error:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Error interno',
-      error: error.message
-    });
+    return res.status(500).json({ success: false, message: 'Error interno' });
   }
-}
-
-// Mapeo de fuente → nombre de lista en Brevo
-function getListName(source) {
-  const map = {
-    'lead-magnet-3-errores': 'lead-magnet-3-errores',
-    'waitlist-fundadoras':   'waitlist-fundadoras',
-    'extracto-lipedema':     'extracto-lipedema',
-    'guia-perimenopausia':   'extracto-lipedema',
-  };
-  return map[source] || 'extracto-lipedema';
 }

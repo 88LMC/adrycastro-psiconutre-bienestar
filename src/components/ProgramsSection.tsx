@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AntiBotFields, useAntiBot } from "@/components/AntiBot";
 
 const programs = [
   {
@@ -51,6 +52,8 @@ const ProgramsSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [ok, setOk] = useState(false);
+  const antibot = useAntiBot();
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ 
@@ -83,21 +86,32 @@ const ProgramsSection = () => {
         body: JSON.stringify({
           email: email.trim().toLowerCase(),
           firstName: '',
-          source: 'guia-perimenopausia'
+          // El formulario entrega el extracto (3 capitulos) de Plena con Lipedema
+          source: 'extracto-lipedema',
+          ...antibot.payload(),
         }),
       });
 
       const data = await response.json();
       
       if (data.success) {
-        setMessage('¡Perfecto! Revisa tu email para descargar la guía.');
+        setOk(true);
+        setMessage(
+          data.doi
+            ? '¡Casi listo! Te enviamos un email para confirmar. Haz clic en el botón del correo y te llega el extracto.'
+            : '¡Perfecto! Revisa tu email para descargar el extracto.'
+        );
         setEmail('');
       } else {
+        setOk(false);
         setMessage(data.message || 'Error al suscribirse. Intenta nuevamente.');
+        antibot.reset();
       }
     } catch (error) {
       console.error('Subscription error:', error);
+      setOk(false);
       setMessage('Error de conexión. Intenta nuevamente.');
+      antibot.reset();
     }
     
     setIsSubmitting(false);
@@ -245,17 +259,20 @@ const ProgramsSection = () => {
             />
             <Button 
               type="submit"
-              disabled={isSubmitting || !email}
+              disabled={isSubmitting || !email || !antibot.ready}
               variant="outline" 
               className="bg-white text-wellness-green hover:bg-gray-100 rounded-full border-0 disabled:opacity-50"
-              aria-label="Descargar guía gratuita de perimenopausia"
+              aria-label="Descargar gratis los primeros 3 capítulos"
             >
               {isSubmitting ? 'Enviando...' : 'Quiero mi Guía'}
             </Button>
           </form>
+          <div className="mt-4">
+            <AntiBotFields antibot={antibot} />
+          </div>
 
           {message && (
-            <p className={`text-sm mt-4 ${message.includes('Perfecto') ? 'text-green-200' : 'text-red-200'}`}>
+            <p className={`text-sm mt-4 ${ok ? 'text-green-200' : 'text-red-200'}`}>
               {message}
             </p>
           )}
