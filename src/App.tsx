@@ -9,10 +9,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
-import TermsConditions from "./pages/TermsConditions";
 import Checkout from "./pages/Checkout"; // Nueva importación para PayPal
 
 const queryClient = new QueryClient();
+
+const ExternalRedirect = ({ to }: { to: string }) => {
+  useEffect(() => {
+    window.location.replace(to);
+  }, [to]);
+  return null;
+};
 
 // Componente simple para página de éxito
 const Success = () => {
@@ -83,7 +89,8 @@ const App = () => {
               <Route path="/admin" element={<Admin />} />
               <Route path="/checkout" element={<Checkout />} /> {/* Nueva ruta PayPal */}
               <Route path="/success" element={<Success />} /> {/* Página de éxito PayPal */}
-              <Route path="/terminos-condiciones" element={<TermsConditions />} />
+              {/* Terminos unicos del producto viven en plenaconlipedema.com */}
+              <Route path="/terminos-condiciones" element={<ExternalRedirect to="https://plenaconlipedema.com/terminos" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

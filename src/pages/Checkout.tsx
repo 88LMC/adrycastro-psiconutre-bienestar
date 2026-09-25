@@ -169,6 +169,12 @@ const Checkout: React.FC = () => {
             </div>
           </div>
         </div>
+        <p className="text-center text-xs text-[#2E2E2E]/60 mt-10 space-x-4">
+          <a href="https://plenaconlipedema.com/terminos" className="hover:underline">Términos</a>
+          <a href="https://plenaconlipedema.com/privacidad" className="hover:underline">Privacidad</a>
+          <a href="https://plenaconlipedema.com/reembolsos" className="hover:underline">Reembolsos</a>
+          <a href="mailto:hola@adrycastro.com" className="hover:underline">hola@adrycastro.com</a>
+        </p>
       </div>
     </div>
   );
