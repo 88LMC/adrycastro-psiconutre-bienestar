@@ -51,9 +51,10 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
         content_name: productName,
         transaction_id: details.id,
       });
-// Confirmar la compra en la app (crea el token de acceso PLENA-XXXX).
-      // Es una llamada aparte de la del libro: si esta falla no debe bloquear
-      // la entrega del libro ni el flujo de exito.
+      // Confirmar la compra: el servidor verifica la orden con PayPal, crea el
+      // codigo de la app y envia UN email con el libro + el codigo.
+      // Si esta llamada falla (red, pestana cerrada), el webhook de PayPal
+      // completa la entrega como respaldo.
       try {
         await fetch('https://app.plenaconlipedema.com/api/confirm-purchase', {
           method: 'POST',
@@ -64,38 +65,6 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({
         console.error('Error confirmando compra (token app):', confirmError);
       }
 
-      
-      
-      // Entregar libro automáticamente
-      try {
-        const deliveryResponse = await fetch('/api/deliver-book', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: details.payer.email_address,
-            paymentId: details.id,
-            productName: productName,
-            amount: amount,
-            customerName: `${details.payer.name?.given_name || ''} ${details.payer.name?.surname || ''}`.trim()
-          }),
-        });
-
-        const deliveryResult = await deliveryResponse.json();
-        
-        if (deliveryResult.success) {
-          console.log('Libro entregado automáticamente:', deliveryResult);
-        } else {
-          console.error('Error en entrega automática:', deliveryResult.message);
-          // El pago fue exitoso, pero la entrega falló - se puede manejar manualmente
-        }
-        
-      } catch (deliveryError) {
-        console.error('Error en entrega automática:', deliveryError);
-        // El pago fue exitoso, pero la entrega falló - continuamos normalmente
-      }
-      
       if (onSuccess) {
         onSuccess(details);
       }

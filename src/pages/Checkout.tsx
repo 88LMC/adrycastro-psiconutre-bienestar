@@ -16,15 +16,12 @@ const PLANS: Record<string, {
     id: 'libro-plena-con-lipedema',
     name: 'Plena con Lipedema',
     price: '27',
-    description: 'El libro completo + la app personalizada + 5 documentos bonus. Tu punto de partida con el Método A.M.A.R.',
+    description: 'El libro completo + la app personalizada. Tu punto de partida con el Método A.M.A.R.',
     features: [
       '9 capítulos de transformación integral',
       'App personalizada con IA — tu guía diaria, de por vida',
-      'Workbook de las 7 herramientas A.M.A.R.',
-      'Tracker de síntomas 30 días',
-      'Guía de ropa y compresión',
-      'Plan alimentación 7 días',
-      'Checklist médica',
+      'Tracker de síntomas de 30 días dentro de la app',
+      'Acceso inmediato: libro y código de la app por email',
     ],
   },
   comunidad: {
