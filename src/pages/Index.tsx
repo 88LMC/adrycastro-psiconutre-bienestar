@@ -7,6 +7,7 @@ import ProgramsSection from "@/components/ProgramsSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
+import ConfirmedBanner from "@/components/ConfirmedBanner";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
         url="https://adrycastro.com"
       />
       <StructuredData />
+      <ConfirmedBanner />
       <Header />
       <HeroSection />
       <AboutSection />
