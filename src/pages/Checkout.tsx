@@ -15,7 +15,8 @@ const PLANS: Record<string, {
   libro: {
     id: 'libro-plena-con-lipedema',
     name: 'Plena con Lipedema',
-    price: '27',
+    // Precio configurable desde Vercel solo para pruebas (VITE_LIBRO_PRICE).
+    price: (import.meta.env.VITE_LIBRO_PRICE as string | undefined) || '27',
     description: 'El libro completo + la app personalizada. Tu punto de partida con el Método A.M.A.R.',
     features: [
       '9 capítulos de transformación integral',
