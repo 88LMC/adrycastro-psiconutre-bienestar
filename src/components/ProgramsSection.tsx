@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Sparkles } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AntiBotFields, useAntiBot } from "@/components/AntiBot";
 
@@ -27,24 +27,6 @@ const programs = [
       "✅ Libro en PDF",
       "✅ App de por vida"
     ]
-  },
-  {
-    id: "mujeres-40",
-    title: "Plena a los cuarenta",
-    description: "El inicio de la mejor etapa de tu vida",
-    icon: Sparkles,
-    regularPrice: null,
-    price: "Próximamente",
-    status: "coming-soon",
-    statusText: "LANZAMIENTO: DIC 2026",
-    cta: "Apúntate a la Lista",
-    features: [
-      "Conociendo y aceptando tu cuerpo. Un viaje del interior al exterior",
-      "El amor propio. El arma secreta que no sabías que tenías",
-      "Bienvenida Perimenopausia.Como afrontarla con la frente en alto ",
-      "Consejos y rutinas practicas"
-    ],
-    highlights: null
   }
 ];
 
@@ -122,14 +104,14 @@ const ProgramsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Libros de <span className="text-wellness-green">Psiconutrición</span> para Mujeres 40+
+            Mi libro: <span className="text-wellness-green">Plena con Lipedema</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Guías prácticas especializadas en lipedema, perimenopausia y bienestar integral para mujeres después de los 40
+            El libro + una app personalizada para entender tu cuerpo y cuidarlo desde el Método A.M.A.R.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid gap-8 max-w-md mx-auto">
           {programs.map((program) => {
             const IconComponent = program.icon;
             const isAvailable = program.status === 'available';
