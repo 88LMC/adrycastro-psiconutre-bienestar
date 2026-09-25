@@ -37,9 +37,7 @@ const CTASection = () => {
               </Link>
             </Button>
             <Button 
-              onClick={() => {
-                alert('Próximamente: Descarga directa de guía');
-              }}
+              onClick={() => scrollToSection('libros')}
               variant="outline" 
               size="lg"
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-wellness-green text-lg font-semibold"

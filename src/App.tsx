@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout"; // Nueva importación para PayPal
 
@@ -86,7 +85,6 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/admin" element={<Admin />} />
               <Route path="/checkout" element={<Checkout />} /> {/* Nueva ruta PayPal */}
               <Route path="/success" element={<Success />} /> {/* Página de éxito PayPal */}
               {/* Terminos unicos del producto viven en plenaconlipedema.com */}

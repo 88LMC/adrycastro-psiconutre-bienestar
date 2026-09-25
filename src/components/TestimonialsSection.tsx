@@ -13,10 +13,10 @@ const scrollToSection = (sectionId: string) => {
       <div className="container mx-auto px-6">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Historias de <span className="text-wellness-green">Transformación</span>
+            Lo que dicen las <span className="text-wellness-green">primeras lectoras</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Mujeres reales que han cambiado su vida con psiconutrición
+            Los primeros mensajes que recibí sobre <em>Plena con Lipedema</em>.
           </p>
         </div>
         
@@ -25,24 +25,24 @@ const scrollToSection = (sectionId: string) => {
           {[
   {
     id: 1,
-    text: "Después de leer el libro de Adry sobre lipedema, finalmente entendí que no estaba loca. Sus estrategias me ayudaron a reducir la inflamación y, por primera vez en años, me siento esperanzada.",
-    author: "María Elena R.",
-    location: "México, 45 años",
-    condition: "Lipedema"
+    text: "Acabo de terminar de leer tu libro. Gracias por hacerlo, me ha gustado mucho y ahora sé cómo puedo vivir con lipedema. Saber que no era la única fue como quitarme un peso de encima. Te mando un abrazo.",
+    author: "Laura",
+    location: "Primera lectora",
+    condition: "Plena con Lipedema"
   },
   {
-    id: 2, 
-    text: "La psiconutrición cambió mi vida. Adry me enseñó que mi relación con la comida tenía más que ver con mis emociones que con falta de voluntad. ¡Gracias por devolverme la confianza!",
-    author: "Carmen S.",
-    location: "Colombia, 42 años", 
-    condition: "Autoestima alimentaria"
+    id: 2,
+    text: "Es un libro de fácil lectura que te ayuda a valorarte y ver las cosas desde otro punto de vista. La app, ¡súper buena!",
+    author: "Faby",
+    location: "Primera lectora",
+    condition: "Libro + App"
   },
   {
     id: 3,
-    text: "Como mexicana viviendo en Estados Unidos, me sentía perdida con tanto consejo que no se aplicaba a nuestra cultura. Adry entiende nuestras necesidades únicas. Su enfoque es real y funciona.",
-    author: "Ana Patricia M.", 
-    location: "Texas, USA, 48 años",
-    condition: "Perimenopausia"
+    text: "Me gustó mucho este libro, la verdad vale la pena leerlo y darle una oportunidad. Muchas gracias, Adry.",
+    author: "Kattia",
+    location: "Primera lectora",
+    condition: "Plena con Lipedema"
   }
 ].map((testimonial) => (
   <Card key={testimonial.id} className="border-0 shadow-soft bg-background hover:shadow-xl transition-all duration-300 group">

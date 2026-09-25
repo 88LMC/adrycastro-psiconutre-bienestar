@@ -9,23 +9,23 @@ const programs = [
   {
     id: "lipedema",
     title: "Plena con Lipedema",
-    description: "La guía completa para entender y manejar el lipedema desde un enfoque integral. Incluye plan de alimentación, estrategias psicológicas y ejercicios específicos.",
+    description: "El libro + una app personalizada con IA para entender y manejar el lipedema con el Método A.M.A.R.: autoestima, movimiento, alimentación y ropa con propósito.",
     icon: Heart,
-    regularPrice: "$47 USD",
+    regularPrice: null,
     price: "$27 USD",
     status: "available",
-    statusText: "PROMOCIÓN LIMITADA",
+    statusText: "DISPONIBLE",
     cta: "Comprar Ahora",
     features: [
-      "Entendiendo el lipedema",
-      "Mi metodología AMAR de las 4 esferas",
-      "Plan de accion",
+      "9 capítulos con el Método A.M.A.R.",
+      "App personalizada con IA — tu guía diaria, sin mensualidad",
+      "Tracker de síntomas de 30 días dentro de la app",
       "Garantía de 30 días"
     ],
     highlights: [
-      "✅ Descarga inmediata",
-      "✅ Formato PDF",
-      "✅ Acceso de por vida"
+      "✅ Acceso inmediato",
+      "✅ Libro en PDF",
+      "✅ App de por vida"
     ]
   },
   {
