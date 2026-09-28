@@ -76,7 +76,7 @@ const Checkout: React.FC = () => {
   };
 
   const handlePaymentError = () => {
-    alert('Hubo un error con el pago. Intenta de nuevo o escribe a hola@adrycastro.com');
+    alert('No se pudo completar el pago. Si tu tarjeta fue rechazada, activa las compras internacionales y en línea en la app de tu banco e intenta de nuevo. Si sigue sin pasar, escríbenos a hola@adrycastro.com');
   };
 
   return (
@@ -166,6 +166,15 @@ const Checkout: React.FC = () => {
                 No necesitas cuenta de PayPal: puedes pagar directo con tu tarjeta de débito o crédito.
               </p>
               <PayPalButton amount={plan.price} productName={plan.name} onSuccess={handlePaymentSuccess} onError={handlePaymentError} />
+              <div className="mt-4 p-3 rounded-lg bg-[#FFF6EC] border border-[#F2C9A0] text-sm text-[#2E2E2E]/85 leading-relaxed">
+                <p className="font-semibold text-[#2E2E2E] mb-1">¿Tu tarjeta fue rechazada?</p>
+                <p>
+                  Muchas tarjetas de débito vienen bloqueadas para compras internacionales o en línea.
+                  Actívalas en la app o la banca en línea de tu banco (o llamando al banco) y vuelve a intentar.
+                  Si aun así no pasa, prueba con otra tarjeta o escríbenos a{' '}
+                  <a href="mailto:hola@adrycastro.com" className="underline">hola@adrycastro.com</a>.
+                </p>
+              </div>
             </div>
             <div className="text-center space-y-2 text-sm text-[#2E2E2E]/70 mt-4">
               <p>🔒 Pago 100% seguro y encriptado</p>
