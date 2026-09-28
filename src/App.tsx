@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { initGA, initMetaPixel, trackEvent } from './lib/analytics';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,6 +29,10 @@ const Success = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#FAF9F7]">
+      <Helmet>
+        <title>¡Gracias por tu compra! | Plena con Lipedema</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="text-center max-w-md mx-auto p-8">
         <div className="mb-6">
           <div className="w-16 h-16 bg-[#EAF3F0] border-2 border-[#49978A] rounded-full flex items-center justify-center mx-auto mb-4">

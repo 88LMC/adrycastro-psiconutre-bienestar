@@ -75,10 +75,11 @@ export const trackInitiateCheckout = (params: {
   const currency = params.currency || 'USD';
 
   if (window.gtag) {
-    window.gtag('event', 'InitiateCheckout', {
+    // Nombre recomendado de GA4 (antes 'InitiateCheckout', que GA4 no reconoce).
+    window.gtag('event', 'begin_checkout', {
       value: params.value,
       currency,
-      content_name: params.content_name,
+      items: [{ item_name: params.content_name, price: params.value, quantity: 1 }],
     });
   }
   if (window.fbq) {

@@ -1,6 +1,7 @@
 // src/pages/Checkout.tsx
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import PayPalButton from '../components/PayPalButton';
 import { trackInitiateCheckout } from '../lib/analytics';
 
@@ -80,6 +81,14 @@ const Checkout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF9F7] py-12">
+      <Helmet>
+        <title>Pago seguro | Plena con Lipedema — libro + app</title>
+        <meta name="description" content="Completa tu compra de Plena con Lipedema: el libro de Adry Castro + la app personalizada. Pago único con PayPal o tarjeta y 30 días de garantía." />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:title" content="Plena con Lipedema — libro + app" />
+        <meta property="og:url" content="https://www.adrycastro.com/checkout" />
+        <link rel="canonical" href="https://www.adrycastro.com/checkout" />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h1 className="font-playfair text-4xl font-bold text-[#2E2E2E] mb-4">{plan.name}</h1>
