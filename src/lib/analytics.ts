@@ -13,7 +13,7 @@ const META_PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
 
 // Initialize Google Analytics
 export const initGA = () => {
-  if (typeof window !== 'undefined' && GA_TRACKING_ID) {
+  if (typeof window !== 'undefined' && GA_TRACKING_ID && !window.gtag) {
     const script1 = document.createElement('script');
     script1.async = true;
     script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;

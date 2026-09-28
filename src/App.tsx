@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { initGA, initMetaPixel, trackEvent } from './lib/analytics';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -75,11 +74,6 @@ const Success = () => {
 };
 
 const App = () => {
-  useEffect(() => {
-    initGA();
-    initMetaPixel();
-  }, []);
-
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
