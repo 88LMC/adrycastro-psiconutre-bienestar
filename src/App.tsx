@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout"; // Nueva importación para PayPal
+import ExtractoLipedema from "./pages/ExtractoLipedema";
 
 const queryClient = new QueryClient();
 
@@ -83,6 +84,8 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              {/* Enlace del email del extracto (Brevo, automatizacion #2) */}
+              <Route path="/extracto-lipedema" element={<ExtractoLipedema />} />
               <Route path="/checkout" element={<Checkout />} /> {/* Nueva ruta PayPal */}
               <Route path="/success" element={<Success />} /> {/* Página de éxito PayPal */}
               {/* Terminos unicos del producto viven en plenaconlipedema.com */}
